@@ -1,0 +1,86 @@
+.Intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 178, 255, 0.3);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+.IntroBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 50%;
+    width: 100%;
+}
+.Bounce {
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+}
+.Botton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 0 10px 0;
+    height: 50px;
+    width: 140px;
+    background: #FF9900;
+    box-shadow: 3px 4px 3px 1px rgba(0, 0, 0, 0.53), inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 5px rgba(255, 255, 255, 0.71);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.true {
+    animation: toggle 0.18s linear ;
+}
+
+@keyframes toggle {
+    0% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 5px rgba(255, 255, 255, 0.70);
+    }
+    70% {
+        box-shadow: 2px 2px 2px  rgba(0, 0, 0, 0.70), inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 5px rgba(255, 255, 255, 0.70);
+    }
+    100% {
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.54), inset -2px -2px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 5px rgba(255, 255, 255, 0.71);
+    }
+}
+
+.Botton > p {
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+}
+
+
+.Info {
+    margin: 0;
+    width: 295px;
+    height: 60px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: rgba(0, 0, 0, 0.40);
+}

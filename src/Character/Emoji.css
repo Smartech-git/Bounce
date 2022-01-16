@@ -1,0 +1,21 @@
+.EyeBalls {
+    animation: roll 2s linear infinite;
+}
+@keyframes roll {
+    0% {
+        transform: translateX(-2px);
+    }
+    40% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    90% {
+        transform: translateX(4px); 
+    }
+    100% {
+        transform: translateX(-2px);
+    }
+    
+}
