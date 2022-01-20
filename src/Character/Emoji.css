@@ -1,21 +1,62 @@
+
 .EyeBalls {
-    animation: roll 2s linear infinite;
+    visibility: none;
+    animation: roll 15s linear infinite alternate, blink 8s linear infinite;
 }
+
 @keyframes roll {
     0% {
         transform: translateX(-2px);
     }
-    40% {
+    
+    20% {
         transform: translateX(-2px);
     }
-    50% {
-        transform: translateX(4px);
-    }
-    90% {
+    20.5% {
         transform: translateX(4px); 
     }
-    100% {
-        transform: translateX(-2px);
+
+    30% {
+        transform: translateX(4px); 
+    }
+
+    31% {
+        transform: translateY(-2px);
     }
     
+    40% {
+        transform: translateY(-2px);
+    }
+    41% {
+        transform: translateY(2px);
+    }
+    45% {
+        transform: translateY(2px);
+    }
+    46% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+    
+}
+
+.Eye{
+    animation: blink 8s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        visibility: none;
+    }
+    80% {
+        visibility: hidden;
+    }
+    81% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: none;
+    }
 }
