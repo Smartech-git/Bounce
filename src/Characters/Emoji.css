@@ -1,7 +1,7 @@
 
 .EyeBalls {
     visibility: none;
-    animation: roll 15s linear infinite alternate, blink 8s linear infinite;
+    animation: roll 12s linear infinite, blink 6s linear infinite;
 }
 
 @keyframes roll {
@@ -42,9 +42,6 @@
     
 }
 
-.Eye{
-    animation: blink 8s linear infinite;
-}
 
 @keyframes blink {
     0% {
@@ -53,10 +50,14 @@
     80% {
         visibility: hidden;
     }
-    81% {
+    82% {
         visibility: hidden;
     }
     100% {
         visibility: none;
     }
+}
+
+.Eye{
+    animation: blink 6s linear infinite;
 }

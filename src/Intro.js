@@ -1,32 +1,43 @@
 import {useState, useEffect} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import Emoji from "./Character/Emoji";
-import Bounce from "./Character/Bounce";
+import { useNavigate} from 'react-router-dom';
+import Emoji from "./Characters/Emoji";
+import Bounce from "./Characters/Images/Bounce.png";
 import './Intro.css';
 
 export default function Intro () {
-    const [toggle, setToggle] = useState("false");
+    const [toggle, setToggle] = useState();
+    const [load, setLoad] = useState();
     const navigate = useNavigate();
     
     useEffect(() => {
         let ID;
-        if(toggle === "") {
+        if(toggle === false) {
             ID = setInterval(()=> {
-                navigate("/Loading...");
+                setToggle("loading")
+                setLoad("start");
             }, 500);
         }
-
         return(() => { 
             clearInterval(ID);
-        })
-        
+        })   
     },[toggle]);
 
-    const handleEffect =() => {
-        setToggle("");
-    }
+    useEffect(() => {
+        let ID2;
+        if(load === "start") {
+            ID2 = setInterval(() => {
+                navigate("/GamePage");
+           }, 7000);
+        }
 
+        return(() =>{
+            clearInterval(ID2);
+        })
+
+    },[load]);
+ 
     return (
+        
         <div className = "Intro">
             <div className = "IntroBody">
                 <div className = "Bounce">
@@ -34,17 +45,21 @@ export default function Intro () {
                         <Emoji/>
                     </div>
                     <div className = "BounceText">
-                        <Bounce/>
+                        <img src={Bounce} alt="Bounce"/>
                     </div>
                     <p className = "Info">
                         A simple game built on React.js library. GitHub repo: github.com/Smartech-git/Bounce.git.
                     </p>
                 </div>
-                {/* <Link to="loading..." style={{textDecoration: "none"}}> */}
-                    <div className = {`Botton ${toggle}`} onMouseDown={() => setToggle(true)} onMouseUp={handleEffect}>
-                    <p>Play</p>
+                {toggle === "loading" ? (
+                     <div className = "loading">
+                         <div className = "loadStatus"></div>
+                     </div>
+                ) : (
+                    <div className = {`Botton ${toggle}`} onMouseDown={() => setToggle(true)} onMouseUp={() =>setToggle(false)}>
+                        <p>Play</p>
                     </div>
-                {/* </Link> */}
+                )}    
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 
 import './App.css';
 import Intro from './Intro';
-import LoadPage from './LoadPage';
+import GamePage from './GamePage';
 import {Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path ="/" element={<Intro/>}/>
-        <Route path ="/loading..." element={<LoadPage/>}/>
+        <Route path ="GamePage" element={<GamePage/>}/>
       </Routes>
     </div>
   );
