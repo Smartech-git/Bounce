@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import Birds from "./Characters/Images/Birds.gif"
+import InfoBar from './InfoBar';
 import BuildingTop from './Characters/BuildingTop';
+import Home from './Home';
 import BackGround11 from './Characters/scenes/BackGround11';
 import BackGround12 from './Characters/scenes/BackGround12';
 import BackGround13 from './Characters/scenes/BackGround13';
@@ -15,51 +18,59 @@ import BackGround34 from './Characters/scenes/BackGround34';
 import Cloud from './Characters/Cloud';
 import "./GamePage.css";
 
+
+
 function GamePage() {
-    return (
-      <div className="BackGC">
-        <div className="GamePage">
-          <div className="Sun" style={{position: "absolute", top: 60, left: 100}}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
-                <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
-              </svg>
-          </div>
-          <div className="Clouds">
-              <Cloud/>
-              <Cloud/>
-              <Cloud/>
-              <Cloud/>
-          </div>
-          <div className="BuildingTops">
-            <BuildingTop/>
-            <BuildingTop/> 
-            <BuildingTop/> 
-            <BuildingTop/>
-          </div>
-          <div className="FirstScene">
-            <BackGround11/>
-            <BackGround12/>
-            <BackGround13/>
-            <BackGround14/>
-            <BackGround11/>
-          </div>
-          <div className="SecondScene">
-            <BackGround21/>
-            <BackGround22/>
-            <BackGround23/>
-            <BackGround24/>
-            <BackGround21/>
-          </div>
-          <div className="ThirdScene">
-            <BackGround31/>
-            <BackGround32/>
-            <BackGround33/>
-            <BackGround34/>
-            <BackGround31/>
-          </div>
+    
+  return (
+    <div className="BackGC">
+      <Home/>
+      <div className="GamePage">
+        <InfoBar/>
+        <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+            <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
+          </svg>
+        </div>
+        <div className="Clouds">
+          <Cloud/>
+          <Cloud/>
+          <Cloud/>
+          <Cloud/>
+        </div>
+        <div className="Birds">
+          <img src={Birds} alt="Birds"></img>
+        </div>
+        <div className="BuildingTops">
+          <BuildingTop/>
+          <BuildingTop/> 
+          <BuildingTop/> 
+          <BuildingTop/>
+        </div>
+        <div className="FirstScene">
+          <BackGround11/>
+          <BackGround12/>
+          <BackGround13/>
+          <BackGround14/>
+          <BackGround11/>
+        </div>
+        <div className="SecondScene">
+          <BackGround21/>
+          <BackGround22/>
+          <BackGround23/>
+          <BackGround24/>
+          <BackGround21/>
+        </div>
+        <div className="ThirdScene">
+          <BackGround31/>
+          <BackGround32/>
+          <BackGround33/>
+          <BackGround34/>
+          <BackGround31/>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default GamePage;

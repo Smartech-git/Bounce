@@ -26,7 +26,7 @@ export default function Intro () {
         let ID2;
         if(load === "start") {
             ID2 = setInterval(() => {
-                navigate("/GamePage");
+                navigate("/GameMode");
            }, 7000);
         }
 

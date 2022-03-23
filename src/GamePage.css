@@ -1,17 +1,23 @@
 .BackGC {
-    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
     width: 85vw;
     max-width: 1440px;
     max-height: 600px;
 }
 .GamePage {
     position: relative;
-    border-radius: 10px;
+    border-radius: 20px;
     height: 100%;
-    width: 100%;
+    width: 85vw;
     background: linear-gradient(180deg, #72CBBA 0%, #C9DD9D 46.93%);
+    border: 6px solid #09689E;
     overflow: hidden;
 }
+
+
 .Clouds {
     display: flex;
     top: 20px;
@@ -34,6 +40,41 @@
 .cloudSvg {
     position: relative;
     width: 100%
+}
+
+.Birds {
+    top: 200px;
+    z-index: 4;
+    position: absolute;
+    width: 100px;
+    transform: translateX(100vw);
+    height: fit-content;
+    animation: firstanima 10s linear 5s, secondanima 75s linear 50s infinite;
+}
+
+@keyframes firstanima {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(-10vw);
+    }
+}
+@keyframes secondanima {
+    0% {
+        transform: translateX(100vw);
+    }
+    80% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: translateX(-10vw); 
+    }
+}
+
+.Birds > img {
+    width: 100%;
+    height: 100%;
 }
 .BuildingTops {
     display: flex;
@@ -65,7 +106,7 @@
     display: flex;
     width: fit-content;
     z-index: 3;
-    transform: translatex(-80%);
+    transform: translatex(0);
     position: absolute;
     bottom: -35px;
     animation: display 50s linear infinite;
@@ -90,7 +131,7 @@
     z-index: 2;
     position: absolute;
     bottom: -8px;
-    transform: translateX(-80%);
+    transform: translateX(0);
     width: fit-content;
     animation: display2 100s linear infinite;
 }

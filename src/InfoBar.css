@@ -1,0 +1,66 @@
+.InfoBar {
+    position: absolute;
+    padding: 30px 50px 0 50px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 91.5%;
+}
+
+.ScoreTab {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+.Score {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.Score > h1 {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #FF9900;
+    -webkit-text-stroke: 1px #990303;
+    margin-right: 10px;
+}
+.Score > span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    -webkit-text-stroke: 1px #FF9900;
+    color: #FFFFFF;
+
+}
+.HighScore {
+    display: flex;
+    align-items: center;
+}
+.HighScore > h1 {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    height: 23px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    -webkit-text-stroke: 1px #990303;
+    color: #FF9900;
+    margin-right: 10px;
+}
+.HighScore > span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    -webkit-text-stroke: 1px #FF9900;
+}
