@@ -11,13 +11,14 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 20px;
+    /* visibility: hidden; */
 }
 
 .HomeFirstTab {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 80%;
     height: 80%;
     background: #58D4DE;
     border: 6px solid #09689E;
@@ -28,18 +29,154 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 60%;
     height: 100%;
-    background-color: red;
+    /* background-color: white; */
 }
 
 .Bounce > img{
-    width: 180px;
+    width: 250px;
     height: fit-content;
 }
 .BounceProfile {
-    width: 100%;
+    margin-top: 5px;
+    height: 70px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.BounceEmoji > img {
+    height: fit-content;
+    width: 70px;
+}
+.ScorePoints {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+.ScoreHome, .HighScoreHome {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    /* background-color: yellow; */
+}
+.ScoreHome > img {
+    height: fit-content;
+    margin-right: 15px;
+    width: 68px;
+}
+.HighScoreHome > img {
+    height: fit-content;
+    margin-right: 15px;
+    width: 120px;
+}
 
+.ScoreHome > span, .HighScoreHome > span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    -webkit-text-stroke: 1px #FF9900;
+}
+
+.HowToPlay {
+    width: max-content;
+    margin: 10px 0 0 30px;
+    height: fit-content;
+}
+.HowToPlay > img {
+    width: fit-content;
+    height: 24px;
+}
+.Details {
+    margin-left: 40px;
+    height: 90px;
+    /* width: fit-content; */
+}
+.FirstDetail, .SecondDetail {
+    display: flex;
+    margin-bottom: 2px ;
+    height: fit-content;
+    width: 90%;
+}
+.FirstDetail > img {
+    margin-right: 30px;
+    width: max-content;
+    height: 22px;
+}
+.SecondDetail > img {
+    margin-right: 10px;
+    width: 100px;
+    height: fit-content;
+}
+.FirstDetail span, .SecondDetail span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 23px;
+    color: rgba(0, 0, 0, 0.7);
+
+}
+.HomeSecondTab {
+    width: 500px;
+    height: 120px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border: 5px solid #FF9900;
+    border-radius: 20px;
+}
+.ActionBotton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
+    background: #FF9900;
+    border: 3px solid #990303;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.true {
+    animation: letsGo 0.19s linear ;
+}
+
+@keyframes letsGo {
+    0% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    70% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    80% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    100% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71); 
+    }
+}
+
+.ActionBotton > span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF
 }

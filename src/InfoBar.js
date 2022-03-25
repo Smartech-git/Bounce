@@ -1,22 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import PauseButton from './PauseButton';
+import Score from './Characters/Images/Score.png';
+import HighScore from './Characters/Images/HighScore.png'
+
 import "./InfoBar.css";
 
 function InfoBar() {
-   const [Score, setScore] = useState("0000");
-   const [Highscore, setHighscore] = useState("0000");
+   const [score, setScore] = useState("0000");
+   const [highscore, setHighscore] = useState("0000");
 
     return (
         <div className="InfoBar">
           <PauseButton/>
           <div className="ScoreTab">
             <div className="Score">
-              <h1>Score</h1>
-              <span>{Score}</span> 
+              <img src={Score} alt="Score"></img>
+              <span>{score}</span> 
             </div>
             <div className="HighScore">
-              <h1>High Score</h1>
-              <span>{Highscore}</span>
+              <img src={HighScore} alt="HighScore"></img>
+              <span>{highscore}</span>
             </div>
           </div>
         </div>

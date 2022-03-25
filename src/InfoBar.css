@@ -19,14 +19,9 @@
     margin-right: 20px;
 }
 
-.Score > h1 {
-    font-family: 'Mochiy Pop One';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 26px;
-    color: #FF9900;
-    -webkit-text-stroke: 1px #990303;
+.Score > img {
+    width: fit-content;
+    height: 24px;
     margin-right: 10px;
 }
 .Score > span {
@@ -43,15 +38,9 @@
     display: flex;
     align-items: center;
 }
-.HighScore > h1 {
-    font-family: 'Mochiy Pop One';
-    font-style: normal;
-    height: 23px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    -webkit-text-stroke: 1px #990303;
-    color: #FF9900;
+.HighScore > img {
+    width: fit-content;
+    height: 24px;
     margin-right: 10px;
 }
 .HighScore > span {

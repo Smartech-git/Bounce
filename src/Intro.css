@@ -3,12 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    height: 90vh;
     width: 85vw;
     max-width: 1440px;
     max-height: 600px;
     border-radius: 10px;
     background: #58D4DE;
+    border: 6px solid #09689E;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
@@ -84,7 +85,7 @@
     cursor: pointer;
 }
 .true {
-    animation: toggle 0.18s linear ;
+    animation: toggle 0.19s linear ;
 }
 
 @keyframes toggle {
@@ -94,8 +95,11 @@
     70% {
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
     }
-    100% {
+    80% {
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    100% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71); 
     }
 }
 

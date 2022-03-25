@@ -12,26 +12,26 @@ export default function Intro () {
     useEffect(() => {
         let ID;
         if(toggle === false) {
-            ID = setInterval(()=> {
+            ID = setTimeout(()=> {
                 setToggle("loading")
                 setLoad("start");
             }, 500);
         }
         return(() => { 
-            clearInterval(ID);
+            clearTimeout(ID);
         })   
     },[toggle]);
 
     useEffect(() => {
-        let ID2;
+        let ID;
         if(load === "start") {
-            ID2 = setInterval(() => {
+            ID = setTimeout(() => {
                 navigate("/GameMode");
            }, 7000);
         }
 
         return(() =>{
-            clearInterval(ID2);
+            clearTimeout(ID);
         })
 
     },[load]);
