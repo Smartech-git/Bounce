@@ -3,6 +3,7 @@ import Birds from "./Characters/Images/Birds.gif"
 import InfoBar from './InfoBar';
 import BuildingTop from './Characters/BuildingTop';
 import Home from './Home';
+import PausePage from './PausePage';
 import BackGround11 from './Characters/scenes/BackGround11';
 import BackGround12 from './Characters/scenes/BackGround12';
 import BackGround13 from './Characters/scenes/BackGround13';
@@ -16,15 +17,27 @@ import BackGround32 from './Characters/scenes/BackGround32';
 import BackGround33 from './Characters/scenes/BackGround33';
 import BackGround34 from './Characters/scenes/BackGround34';
 import Cloud from './Characters/Cloud';
+import { useStateValue } from './StateProvider';
 import "./GamePage.css";
 
 
-
 function GamePage() {
-    
+  const [state, dispatch] = useStateValue();
+  const [InnerD, setInnerD] = useState();
+  
+  useEffect(() => {
+    if(state.GameStates.Start === false) {
+      setInnerD(<Home/> );
+    } else if(state.GameStates.Pause === true) {
+       setInnerD(<PausePage/>);
+    }else {
+      setInnerD();
+    };
+  }, [state])
+
   return (
     <div className="BackGC">
-      <Home/>
+      {InnerD}
       <div className="GamePage">
         <InfoBar/>
         <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>

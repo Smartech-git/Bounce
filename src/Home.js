@@ -7,25 +7,34 @@ import HighScore from './Characters/Images/HighScore.png';
 import HowToPlay from './Characters/Images/HowToPlay.png';
 import Mobile from './Characters/Images/Mobile.png';
 import Desktop from './Characters/Images/Desktop.png';
+import {useStateValue} from './StateProvider';
+import { actionTypes } from './Reducer';
 
 function Home() {
+    const [state, dispatch] = useStateValue();
     const [letsGo, setLetsGo] = useState();
+    const [unmount, setUnmount]  = useState();
 
     useEffect(() => {
         let ID;
         if(letsGo === false) {
-            ID = setTimeout(()=> {
-                
+            ID = setTimeout(()=>  {
+                const action = {
+                    type : actionTypes.START,
+                    Start: true
+                }
+                dispatch(action);
             }, 500);
         }
         return(() => { 
             clearTimeout(ID);
+            setUnmount("Unmount");
         })
     }, [letsGo]);
 
 
     return (
-        <div className='Home'>
+        <div className={`Home ${unmount}`}>
             <div className="HomeFirstTab">
                 <div className="HomeInfo">
                     <div className="Bounce">
@@ -38,11 +47,11 @@ function Home() {
                         <div className="ScorePoints">
                             <div className="ScoreHome">
                                 <img src={Score} alt="Score"></img>
-                                <span>0000</span>
+                                <span>{state.Score}</span>
                             </div>
                             <div className="HighScoreHome">
                                 <img src={HighScore} alt="HighScore"></img>
-                                <span>0000000</span>
+                                <span>{state.HighScore}</span>
                             </div>
                         </div>
                     </div>
@@ -61,7 +70,7 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className={`ActionBotton ${letsGo}`} onMouseDown={() => setLetsGo(true)} onMouseUp={() => setLetsGo(false)}>
+                    <div className={`ActionBotton letsGo${letsGo}`} onMouseDown={() => setLetsGo(true)} onMouseUp={() => setLetsGo(false)}>
                         <span>Let's bounce</span>
                     </div>
                 </div>

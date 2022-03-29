@@ -1,0 +1,121 @@
+.PausePage {
+    position: absolute;
+    z-index: 12;
+    height: 81vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 78vw;
+    border-radius: 20px;
+    background: linear-gradient(105.19deg, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 98.66%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    transform: translateY(-60px);
+    opacity: 0;
+    animation: fadeIn2 0.5s ease forwards;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+.Unmount {
+    animation: unmount 0.9s ease forwards;
+}
+
+@keyframes fadeIn2 {
+    form {
+        transform: translateY(-60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes unmount {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    100% {
+        transform: translateY(-60px);
+        opacity: 0;
+    }
+}
+
+.InnerTab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background: #58D4DE;
+    border: 6px solid #09689E;
+    border-radius: 10px;
+}
+.Pause > img {
+    margin-top: 10px;
+    width: 200px;
+    height: fit-content;
+}
+.Options {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: fit-content;
+    margin-bottom: 100px;
+}
+.Resume, .Restart, .Quit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 180px;
+    border-radius: 10px;
+    background: #FF9900;
+    border: 3px solid #990303;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.bottontrue {
+    animation: letsGo 0.19s linear ;
+}
+
+@keyframes letsGo {
+    0% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    70% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    80% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    100% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71); 
+    }
+}
+.Resume > span, .Restart > span, .Quit > span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF
+}

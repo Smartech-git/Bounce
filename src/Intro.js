@@ -26,7 +26,7 @@ export default function Intro () {
         let ID;
         if(load === "start") {
             ID = setTimeout(() => {
-                navigate("/GameMode");
+                navigate("/gamemode");
            }, 7000);
         }
 

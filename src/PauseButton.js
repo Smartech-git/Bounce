@@ -1,7 +1,20 @@
+import {useState, useEffect} from 'react';
+import {actionTypes} from './Reducer';
+import {useStateValue} from './StateProvider';
 
 function PauseButton () {
+    const [state, dispatch] = useStateValue();
+
+   const handlePauseEvent = () => {
+        const action1 = {
+            type : actionTypes.PAUSE,
+            Pause : true
+        };
+        dispatch(action1);
+    };
+
     return (
-        <div className="PauseButton">
+        <div className="PauseButton" onClick={handlePauseEvent} style={{ cursor: "pointer"}}>
            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <g filter="url(#filter0_d_198_145)">
                 <rect x="5.5" y="3.5" width="37" height="37" rx="8.5" fill="#FF9900" stroke="#990303" stroke-width="3"/>
