@@ -5,7 +5,7 @@ function BackGround11() {
         <div className="BackGround">
            <svg className="scene1" xmlns="http://www.w3.org/2000/svg" width="1440" height="271" viewBox="0 0 1440 271" fill="none">
                 <path d="M748.5 12C780.9 49.2 818 56.8333 832.5 56" stroke="black"/>
-                <rect x="454" y="11" width="210" height="259" fill="#4C8C7E"/>
+                <rect x="450" y="11" width="210" height="259" fill="#4C8C7E"/>
                 <path d="M712 79H1104V270H712V79Z" fill="#4C8C7E"/>
                 <rect x="139" y="79" width="133" height="191" fill="#4C8C7E"/>
                 <rect x="153" y="112" width="24" height="24" fill="#FAE656"/>

@@ -6,17 +6,31 @@
     width: 85vw;
     max-width: 1440px;
     max-height: 600px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 .GamePage {
     position: relative;
     border-radius: 20px;
     height: 100%;
-    width: 85vw;
+    width: 100%;
     background: linear-gradient(180deg, #72CBBA 0%, #C9DD9D 46.93%);
     border: 6px solid #09689E;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.Content {
+    position: relative;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+}
 
 .Clouds {
     display: flex;
@@ -24,15 +38,6 @@
     width: max-content;
     position: absolute;
     transform: translateX(0);
-    animation: clouds 800s linear infinite;
-}
-@keyframes clouds {
-    form{
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-75%);
-    }
 }
 .Cloud{
     width: 85vw;
@@ -83,16 +88,6 @@
     bottom: -30px;
     width: fit-content;
     left: 0px;
-    animation: motion 20s linear infinite;
-}
-
-@keyframes motion {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
 }
 .BuildingTop {
     width: 100%;
@@ -109,17 +104,8 @@
     transform: translatex(0);
     position: absolute;
     bottom: -35px;
-    animation: display 50s linear infinite;
 }
 
-@keyframes display {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-80%);
-    }
-}
 .scene1 {
     width: 80vw;
     max-width: 1440px;
@@ -133,15 +119,6 @@
     bottom: -8px;
     transform: translateX(0);
     width: fit-content;
-    animation: display2 100s linear infinite;
-}
-@keyframes display2 {
-    from{
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-80%);
-    }
 }
 
 .scene2 {
@@ -157,15 +134,6 @@
     position: absolute;
     transform: translateX(0);
     width: fit-content;
-    animation: display3 200s linear infinite;
-}
-@keyframes display3 {
-    from{
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-80%);
-    }
 }
   
 .scene3 {

@@ -1,13 +1,14 @@
 .InfoBar {
     position: absolute;
-    padding: 30px 50px 0 50px;
     z-index: 5;
+    width: 100%;
+}
+.InContent {
+    padding: 30px 50px 0 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 91.5%;
 }
-
 .ScoreTab {
     display: flex;
     align-items: center;

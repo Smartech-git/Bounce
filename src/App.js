@@ -1,4 +1,4 @@
-
+import React,{useEffect} from 'react';
 import './App.css';
 import Intro from './Intro';
 import GamePage from './GamePage';

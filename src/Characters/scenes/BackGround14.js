@@ -23,7 +23,7 @@ function BackGround14() {
                 <path d="M627 49.5C582.2 91.9 468 105.5 416.5 107" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M627.5 60C582.7 102.4 468.5 116 417 117.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M628 70.5C583.2 112.9 469 126.5 417.5 128" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="917" y="62" width="93" height="21" fill="#4C8C7E"/>
+                <rect x="917" y="65" width="93" height="21" fill="#4C8C7E"/>
             </svg>
         </div>
     );

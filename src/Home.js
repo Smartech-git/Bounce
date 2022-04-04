@@ -23,7 +23,12 @@ function Home() {
                     type : actionTypes.START,
                     Start: true
                 }
+                const action2 = {
+                    type : actionTypes.QUIT,
+                    Start : false
+                }
                 dispatch(action);
+                dispatch(action2);
             }, 500);
         }
         return(() => { 
@@ -38,7 +43,7 @@ function Home() {
             <div className="HomeFirstTab">
                 <div className="HomeInfo">
                     <div className="Bounce">
-                        <img src={Bounce} alt="Bounce"></img>
+                        <img src={Bounce} alt="Bounce" decoding='sync'></img>
                     </div>
                     <div className="BounceProfile">
                         <div className="BounceEmoji">

@@ -1,11 +1,11 @@
 .PausePage {
     position: absolute;
     z-index: 12;
-    height: 81vh;
+    height: 92%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 78vw;
+    width: 95%;
     border-radius: 20px;
     background: linear-gradient(105.19deg, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 98.66%);
     backdrop-filter: blur(15px);
@@ -27,11 +27,15 @@
 }
 
 @keyframes fadeIn2 {
-    form {
+    0% {
         transform: translateY(-60px);
         opacity: 0;
     }
-    to {
+    40% {
+        transform: translateY(-60px);
+        opacity: 0;
+    }
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
@@ -66,7 +70,7 @@
 .Pause > img {
     margin-top: 10px;
     width: 200px;
-    height: fit-content;
+    height: 62px;
 }
 .Options {
     height: 180px;

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import Birds from "./Characters/Images/Birds.gif"
 import InfoBar from './InfoBar';
 import BuildingTop from './Characters/BuildingTop';
@@ -24,7 +24,12 @@ import "./GamePage.css";
 function GamePage() {
   const [state, dispatch] = useStateValue();
   const [InnerD, setInnerD] = useState();
-  
+  const FirstSceneRef = useRef();
+  const SecondSceneRef = useRef();
+  const ThirdSceneRef = useRef();
+  const PlatformRef = useRef();
+  const CloudRef= useRef();
+
   useEffect(() => {
     if(state.GameStates.Start === false) {
       setInnerD(<Home/> );
@@ -33,53 +38,174 @@ function GamePage() {
     }else {
       setInnerD();
     };
-  }, [state])
+  }, [state.GameStates.Start, state.GameStates.Pause]);
+
+
+ useEffect(() => {
+  let C = document.getElementsByClassName("Clouds")[0].animate(
+    [
+      {transform: "translateX(0)"},
+      {transform: "translateX(-75%)"}
+    ],
+    {
+      duration: 800*1000,
+      easing: 'linear',
+      iteration: Infinity
+    }
+  )
+  let F = document.getElementsByClassName("FirstScene")[0].animate(
+    [
+      {transform: 'translateX(0)'},
+      {transform: 'translateX(-80%)'}
+    ],
+    {
+      duration: 50000,
+      easing: 'linear',
+      iterations: Infinity
+    }
+  );
+
+  let S  = document.getElementsByClassName("SecondScene")[0].animate(
+    [
+      {transform: 'translateX(0)'},
+      {transform: 'translateX(-80%)'}
+    ],
+    {
+      duration: 100000,
+      easing: 'linear',
+      iterations: Infinity
+    }
+  );
+
+  let T = document.getElementsByClassName("ThirdScene")[0].animate(
+    [
+      {transform: 'translateX(0)'},
+      {transform: 'translateX(-80%)'}
+    ],
+    {
+      duration: 200000,
+      easing: 'linear',
+      iterations: Infinity
+    }
+  );
+
+  let P = document.getElementsByClassName("BuildingTops")[0].animate(
+    [
+      {transform: "translateX(0)"},
+      {transform: "translateX(-50%)"}
+    ],
+    {
+      duration: 20000,
+      easing: 'linear',
+      iterations: Infinity
+    }
+  );
+  FirstSceneRef.current = F;
+  SecondSceneRef.current = S;
+  ThirdSceneRef.current = T;
+  PlatformRef.current = P;
+  CloudRef.current = C;
+ },[]);
+  
+
+  useEffect(() => {
+    if (state.GameStates.Start === true) {
+      FirstSceneRef.current.play();
+      SecondSceneRef.current.play();
+      ThirdSceneRef.current.play();
+      PlatformRef.current.play();
+      CloudRef.current.play();
+    } else if(state.GameStates.Start === false) {
+      FirstSceneRef.current.pause();
+      SecondSceneRef.current.pause();
+      ThirdSceneRef.current.pause();
+      PlatformRef.current.pause();
+      CloudRef.current.pause();
+    }
+  }, [state.GameStates.Start]);
+
+  useEffect(() => {
+    if(state.GameStates.Pause === true) {
+      FirstSceneRef.current.pause();
+      SecondSceneRef.current.pause();
+      ThirdSceneRef.current.pause();
+      PlatformRef.current.pause();
+      CloudRef.current.pause();
+    }else if(state.GameStates.Resume === true) {
+      FirstSceneRef.current.play();
+      SecondSceneRef.current.play();
+      ThirdSceneRef.current.play();
+      PlatformRef.current.play();
+      CloudRef.current.play();
+    }else if(state.GameStates.Quit === true) {
+      FirstSceneRef.current.cancel();
+      SecondSceneRef.current.cancel();
+      ThirdSceneRef.current.cancel();
+      PlatformRef.current.cancel();
+      CloudRef.current.cancel();
+    }else if(state.GameStates.Restart === true) {
+      FirstSceneRef.current.cancel();
+      SecondSceneRef.current.cancel();
+      ThirdSceneRef.current.cancel();
+      PlatformRef.current.cancel();
+      CloudRef.current.cancel();
+      
+      FirstSceneRef.current.play();
+      SecondSceneRef.current.play();
+      ThirdSceneRef.current.play();
+      PlatformRef.current.play();
+      CloudRef.current.play();
+    }
+  }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart])
+
 
   return (
     <div className="BackGC">
-      {InnerD}
       <div className="GamePage">
-        <InfoBar/>
-        <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
-            <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
-          </svg>
-        </div>
-        <div className="Clouds">
-          <Cloud/>
-          <Cloud/>
-          <Cloud/>
-          <Cloud/>
-        </div>
-        <div className="Birds">
-          <img src={Birds} alt="Birds"></img>
-        </div>
-        <div className="BuildingTops">
-          <BuildingTop/>
-          <BuildingTop/> 
-          <BuildingTop/> 
-          <BuildingTop/>
-        </div>
-        <div className="FirstScene">
-          <BackGround11/>
-          <BackGround12/>
-          <BackGround13/>
-          <BackGround14/>
-          <BackGround11/>
-        </div>
-        <div className="SecondScene">
-          <BackGround21/>
-          <BackGround22/>
-          <BackGround23/>
-          <BackGround24/>
-          <BackGround21/>
-        </div>
-        <div className="ThirdScene">
-          <BackGround31/>
-          <BackGround32/>
-          <BackGround33/>
-          <BackGround34/>
-          <BackGround31/>
+        {InnerD}
+        <div className='Content'>
+          <InfoBar/>
+          <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+              <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
+            </svg>
+          </div>
+          <div className="Clouds">
+            <Cloud/>
+            <Cloud/>
+            <Cloud/>
+            <Cloud/>
+          </div>
+          <div className="Birds">
+            <img src={Birds} alt="Birds"></img>
+          </div>
+          <div className="BuildingTops">
+            <BuildingTop/>
+            <BuildingTop/> 
+            <BuildingTop/> 
+            <BuildingTop/>
+          </div>
+          <div className="FirstScene">
+            <BackGround11/>
+            <BackGround12/>
+            <BackGround13/>
+            <BackGround14/>
+            <BackGround11/>
+          </div>
+          <div className="SecondScene">
+            <BackGround21/>
+            <BackGround22/>
+            <BackGround23/>
+            <BackGround24/>
+            <BackGround21/>
+          </div>
+          <div className="ThirdScene">
+            <BackGround31/>
+            <BackGround32/>
+            <BackGround33/>
+            <BackGround34/>
+            <BackGround31/>
+          </div>
         </div>
       </div>
     </div>

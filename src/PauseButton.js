@@ -1,20 +1,41 @@
 import {useState, useEffect} from 'react';
 import {actionTypes} from './Reducer';
+import './PauseButton.css';
 import {useStateValue} from './StateProvider';
 
 function PauseButton () {
     const [state, dispatch] = useStateValue();
+    const [effect, setEffect] = useState();
 
-   const handlePauseEvent = () => {
-        const action1 = {
-            type : actionTypes.PAUSE,
-            Pause : true
-        };
-        dispatch(action1);
-    };
+    useEffect(() => {
+        let ID;
+        if (effect === false) {
+            ID = setTimeout(() => {
+                const action = {
+                    type : actionTypes.PAUSE,
+                    Pause : true
+                };
+                const action2 = {
+                    type: actionTypes.RESTART,
+                    Restart : false
+                };
+                const action3 = {
+                    type: actionTypes.RESUME,
+                    Resume : false
+                }
+                dispatch(action);
+                dispatch(action2);
+                dispatch(action3);
+            }, 500);           
+        }
+        return(() => {
+            clearTimeout(ID)
+         }) 
+
+    }, [effect]);
 
     return (
-        <div className="PauseButton" onClick={handlePauseEvent} style={{ cursor: "pointer"}}>
+        <div className= {`PauseBotton ${effect}`} onMouseDown={()=> setEffect("Effect")} onMouseUp={() => setEffect(false)}>
            <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <g filter="url(#filter0_d_198_145)">
                 <rect x="5.5" y="3.5" width="37" height="37" rx="8.5" fill="#FF9900" stroke="#990303" stroke-width="3"/>

@@ -1,0 +1,18 @@
+.PauseBotton {
+    cursor: pointer;
+}
+.Effect {
+    animation: effect 1s linear;
+}
+
+@keyframes effect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
