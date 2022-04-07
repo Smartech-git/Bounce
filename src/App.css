@@ -8,3 +8,12 @@
     justify-content: center;
     background: linear-gradient(111deg, #0F043C 0%, #222F43 100%);
 }
+.SensitiveTab {
+    position: absolute;
+    opacity: 0;
+    height: 80vh;
+    bottom: 0;
+    width: 100%;
+    z-index: 11;
+    background-color: red;
+}

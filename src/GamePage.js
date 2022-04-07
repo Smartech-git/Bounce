@@ -18,36 +18,28 @@ import BackGround33 from './Characters/scenes/BackGround33';
 import BackGround34 from './Characters/scenes/BackGround34';
 import Cloud from './Characters/Cloud';
 import { useStateValue } from './StateProvider';
+import Bouncy from './Bouncy';
 import "./GamePage.css";
 
 
 function GamePage() {
   const [state, dispatch] = useStateValue();
-  const [InnerD, setInnerD] = useState();
   const FirstSceneRef = useRef();
   const SecondSceneRef = useRef();
   const ThirdSceneRef = useRef();
   const PlatformRef = useRef();
   const CloudRef= useRef();
 
-  useEffect(() => {
-    if(state.GameStates.Start === false) {
-      setInnerD(<Home/> );
-    } else if(state.GameStates.Pause === true) {
-       setInnerD(<PausePage/>);
-    }else {
-      setInnerD();
-    };
-  }, [state.GameStates.Start, state.GameStates.Pause]);
-
-
+ 
  useEffect(() => {
-  let C = document.getElementsByClassName("Clouds")[0].animate(
+   let t = 3000;
+   let C = document.getElementsByClassName("Clouds")[0].animate(
     [
       {transform: "translateX(0)"},
       {transform: "translateX(-75%)"}
     ],
-    {
+    { 
+      delay: t,
       duration: 800*1000,
       easing: 'linear',
       iteration: Infinity
@@ -59,6 +51,7 @@ function GamePage() {
       {transform: 'translateX(-80%)'}
     ],
     {
+      delay: t,
       duration: 50000,
       easing: 'linear',
       iterations: Infinity
@@ -71,6 +64,7 @@ function GamePage() {
       {transform: 'translateX(-80%)'}
     ],
     {
+      delay: t,
       duration: 100000,
       easing: 'linear',
       iterations: Infinity
@@ -83,6 +77,7 @@ function GamePage() {
       {transform: 'translateX(-80%)'}
     ],
     {
+      delay: t,
       duration: 200000,
       easing: 'linear',
       iterations: Infinity
@@ -95,6 +90,7 @@ function GamePage() {
       {transform: "translateX(-50%)"}
     ],
     {
+      delay: t,
       duration: 20000,
       easing: 'linear',
       iterations: Infinity
@@ -106,7 +102,7 @@ function GamePage() {
   PlatformRef.current = P;
   CloudRef.current = C;
  },[]);
-  
+ 
 
   useEffect(() => {
     if (state.GameStates.Start === true) {
@@ -137,7 +133,7 @@ function GamePage() {
       ThirdSceneRef.current.play();
       PlatformRef.current.play();
       CloudRef.current.play();
-    }else if(state.GameStates.Quit === true) {
+    }else if(state.GameStates.Quit === true ) {
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
@@ -158,11 +154,12 @@ function GamePage() {
     }
   }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart])
 
-
+console.log("Rendering")
   return (
     <div className="BackGC">
       <div className="GamePage">
-        {InnerD}
+        {state.GameStates.Start === false && <Home/>}
+        {state.GameStates.Pause === true && <PausePage/>}
         <div className='Content'>
           <InfoBar/>
           <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
@@ -179,6 +176,7 @@ function GamePage() {
           <div className="Birds">
             <img src={Birds} alt="Birds"></img>
           </div>
+          <Bouncy/>
           <div className="BuildingTops">
             <BuildingTop/>
             <BuildingTop/> 

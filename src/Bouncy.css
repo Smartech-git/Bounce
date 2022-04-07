@@ -1,0 +1,48 @@
+.Bouncy {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    height: 150px;
+    z-index: 11;
+    bottom: 33px;
+    left: 10%;
+    /* background-color: black; */
+}
+.Expressions {
+    position: absolute;
+    height: 64px;
+    width: max-content;
+    z-index: 2;
+    right: 0;
+}
+.Bouncy_Shocked {
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    opacity: 0;
+}
+
+.Bouncy_Confused {
+    position: absolute;
+    right: 0;
+    z-index:4;
+    opacity: 0;
+}
+.Bouncy_Serious {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    top: 0;
+    opacity: 0;
+}
+
+.trails {
+    position: absolute;
+    height: 64px;
+    width: fit-content;
+    z-index: 1;
+    left: 3px;
+    transform: scaleX(0);
+    transform-origin: right;
+}

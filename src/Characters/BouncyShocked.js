@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Bouncy_Shocked() {
+function BouncyShocked() {
     return (
         <div className='Bouncy_Shocked'>
            <svg xmlns="http://www.w3.org/2000/svg" width="69" height="63" viewBox="0 0 69 63" fill="none">
@@ -103,4 +103,4 @@ function Bouncy_Shocked() {
     );
 }
 
-export default Bouncy_Shocked;
+export default BouncyShocked;
