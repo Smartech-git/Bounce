@@ -12,7 +12,8 @@
 .ScoreTab {
     display: flex;
     align-items: center;
-    width: fit-content;
+    justify-content: space-between;
+    width: 320px;
 }
 .Score {
     display: flex;

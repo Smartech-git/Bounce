@@ -96,6 +96,18 @@ function GamePage() {
       iterations: Infinity
     }
   );
+
+  let B = document.getElementsByClassName("Birds")[0].animate(
+    [
+      {transform: "translate(100vw)"},
+      {transform: "translate(-10vw)"}
+    ],
+    {
+      delay: 5*1000,
+      duration: 10*1000
+    }
+  )
+
   FirstSceneRef.current = F;
   SecondSceneRef.current = S;
   ThirdSceneRef.current = T;

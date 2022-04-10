@@ -54,17 +54,9 @@
     width: 100px;
     transform: translateX(100vw);
     height: fit-content;
-    animation: firstanima 10s linear 5s, secondanima 75s linear 50s infinite;
+    animation:  secondanima 75s linear 30s infinite;
 }
 
-@keyframes firstanima {
-    from {
-        transform: translateX(100vw);
-    }
-    to {
-        transform: translateX(-10vw);
-    }
-}
 @keyframes secondanima {
     0% {
         transform: translateX(100vw);
@@ -85,7 +77,7 @@
     display: flex;
     z-index: 10;
     position: absolute;
-    bottom: -30px;
+    top: 77vh;
     width: fit-content;
     left: 0px;
 }

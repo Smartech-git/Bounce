@@ -39,8 +39,8 @@ function Bouncy() {
         );
         let T =  document.getElementsByClassName("trails")[0].animate(
             [
-                {transform: "scaleX(0.5) rotate(10deg)"},
-                {transform: "scaleX(1) rotate(10deg)"}
+                {transform: "scaleX(0) rotate(0deg)"},
+                {transform: "scaleX(0.6) rotate(0deg)"}
             ],
             {
                 delay: BSH.effect.getComputedTiming().delay + BCF.effect.getComputedTiming().duration - 1000,
@@ -79,6 +79,19 @@ function Bouncy() {
             TrailRef.current.cancel();
         }
     }, [state.GameStates.Start]);
+
+    useEffect(() => {
+        if(state.GameStates.Restart === true) {
+            BCFref.current.cancel();
+            BSHref.current.cancel();
+            BSEref.current.cancel();
+            TrailRef.current.cancel();
+            BCFref.current.play();
+            BSHref.current.play();
+            BSEref.current.play();
+            TrailRef.current.play();
+        }
+    }, [state.GameStates.Restart]);
     
         
     return (
