@@ -1,0 +1,38 @@
+
+.PlayBuilding {
+    z-index: 10;
+    top: 61.5vh;
+    height: 300px;
+    display: flex;
+    position: absolute;
+    width: fit-content;
+    left: 0px;
+}
+.BTone {
+    /* background-color: red; */
+    height: 100%;
+    width: 1439px;
+    margin-left: -8px ;
+}
+
+.ObstacleOne {
+    position: absolute;
+    top: 6px
+}
+.ObstacleTwo {
+    position: absolute;
+    top: 40px;
+}
+
+.ObstacleThree {
+    position: absolute;
+    top: 28px;
+}
+.BuildingTop {
+    top: 95px;
+    width: fit-content;
+    position: absolute;
+}
+.Platform {
+    width: max-content;
+}

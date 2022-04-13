@@ -13,10 +13,10 @@ function Bouncy() {
     const BSEref = useRef();
     const TrailRef = useRef();
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         let BCF = document.getElementsByClassName('Bouncy_Confused')[0].animate(
             [
-                {opacity : 1},
+                {opacity: 1},
                 {opacity: 1, offset: 0.99},
                 {opacity: 0, offset: 1}
             ],
@@ -39,7 +39,8 @@ function Bouncy() {
         );
         let T =  document.getElementsByClassName("trails")[0].animate(
             [
-                {transform: "scaleX(0) rotate(0deg)"},
+                {transform: "scaleX(0) rotate(0deg)", opacity: 0, offset: 0.05},
+                {transform: "scaleX(0) rotate(0deg)", opacity: 1 },
                 {transform: "scaleX(0.6) rotate(0deg)"}
             ],
             {

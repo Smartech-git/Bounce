@@ -1,5 +1,7 @@
 
 .Intro {
+    position: relative;
+    z-index: 12;
     display: flex;
     justify-content: center;
     align-items: center;

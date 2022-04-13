@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 320px;
+    width: 380px;
 }
 .Score {
     display: flex;
@@ -23,14 +23,14 @@
 
 .Score > img {
     width: fit-content;
-    height: 24px;
+    height: 28px;
     margin-right: 10px;
 }
 .Score > span {
     font-family: 'Mochiy Pop One';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.1em;
     -webkit-text-stroke: 1px #FF9900;
     color: #FFFFFF;
@@ -42,7 +42,7 @@
 }
 .HighScore > img {
     width: fit-content;
-    height: 24px;
+    height: 28px;
     margin-right: 10px;
 }
 .HighScore > span {

@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Birds from "./Characters/Images/Birds.gif"
 import InfoBar from './InfoBar';
-import BuildingTop from './Characters/BuildingTop';
+import PlayBuilding from './PlayBuilding';
 import Home from './Home';
 import PausePage from './PausePage';
 import BackGround11 from './Characters/scenes/BackGround11';
@@ -29,7 +29,9 @@ function GamePage() {
   const ThirdSceneRef = useRef();
   const PlatformRef = useRef();
   const CloudRef= useRef();
-
+  const BouncyRef = useRef();
+  const TrailsRef = useRef();
+  const [X, setX] = useState(false);
  
  useEffect(() => {
    let t = 3000;
@@ -84,35 +86,51 @@ function GamePage() {
     }
   );
 
-  let P = document.getElementsByClassName("BuildingTops")[0].animate(
+  let P = document.getElementsByClassName("PlayBuilding")[0].animate(
     [
       {transform: "translateX(0)"},
       {transform: "translateX(-50%)"}
     ],
     {
       delay: t,
-      duration: 20000,
+      duration: 5*1000,
       easing: 'linear',
       iterations: Infinity
     }
   );
-
-  let B = document.getElementsByClassName("Birds")[0].animate(
+    
+  let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
     [
-      {transform: "translate(100vw)"},
-      {transform: "translate(-10vw)"}
+      {top: "60.6vh"},
+      {top: "30vh", offset: 0.5},
+      {top: "30vh", offset: 0.5},
+      {top: "60.6vh"}
     ],
     {
-      delay: 5*1000,
-      duration: 10*1000
+      duration: 700,
+      easing: "linear",
     }
-  )
+  );
+    
+  let Trails = document.getElementsByClassName("trails")[0].animate(
+    [
+      {transform: "rotate(-30deg) scaleX(0.6)"},
+      {transform: "rotate(0deg) scaleX(1)", offset: 0.5},
+      {transform: "rotate(30deg) scaleX(0.6)"}
+    ],
+    {
+      duration: 600
+    }
+
+  );
 
   FirstSceneRef.current = F;
   SecondSceneRef.current = S;
   ThirdSceneRef.current = T;
   PlatformRef.current = P;
   CloudRef.current = C;
+  BouncyRef.current = Bouncy;
+  TrailsRef.current = Trails;
  },[]);
  
 
@@ -164,57 +182,77 @@ function GamePage() {
       PlatformRef.current.play();
       CloudRef.current.play();
     }
-  }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart])
+  }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart]);
 
-console.log("Rendering")
+  useEffect(() => {
+    let ID;
+    setX(false);
+    if(state.GameStates.Start === true || state.GameStates.Restart === true){
+      ID = setTimeout(() => {
+        setX(true);
+      }, 3000);
+    }
+    return(() => {
+      clearTimeout(ID)
+    })
+  }, [state.GameStates.Start, state.GameStates.Restart]);
+
+  function HandleJump(){
+    if(state.GameStates.Start === true && X === true){
+      BouncyRef.current.play();
+      TrailsRef.current.play();
+    } else if(state.GameStates.Pause === true){
+      BouncyRef.current.pause();
+      TrailsRef.current.pause();
+    }   
+  }
+ 
   return (
-    <div className="BackGC">
-      <div className="GamePage">
-        {state.GameStates.Start === false && <Home/>}
-        {state.GameStates.Pause === true && <PausePage/>}
-        <div className='Content'>
-          <InfoBar/>
-          <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
-              <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
-            </svg>
-          </div>
-          <div className="Clouds">
-            <Cloud/>
-            <Cloud/>
-            <Cloud/>
-            <Cloud/>
-          </div>
-          <div className="Birds">
-            <img src={Birds} alt="Birds"></img>
-          </div>
-          <Bouncy/>
-          <div className="BuildingTops">
-            <BuildingTop/>
-            <BuildingTop/> 
-            <BuildingTop/> 
-            <BuildingTop/>
-          </div>
-          <div className="FirstScene">
-            <BackGround11/>
-            <BackGround12/>
-            <BackGround13/>
-            <BackGround14/>
-            <BackGround11/>
-          </div>
-          <div className="SecondScene">
-            <BackGround21/>
-            <BackGround22/>
-            <BackGround23/>
-            <BackGround24/>
-            <BackGround21/>
-          </div>
-          <div className="ThirdScene">
-            <BackGround31/>
-            <BackGround32/>
-            <BackGround33/>
-            <BackGround34/>
-            <BackGround31/>
+    <div className='Sensitive'>
+      <div className='SensitiveTab' onMouseDown={HandleJump}></div>
+      <div className="BackGC">
+        <div className="GamePage">
+          {state.GameStates.Start === false && <Home/>}
+          {state.GameStates.Pause === true && <PausePage/>}
+          <div className='Content'>
+            <InfoBar/>
+            <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+                <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
+              </svg>
+            </div>
+            <div className="Clouds">
+              <Cloud/>
+              <Cloud/>
+              <Cloud/>
+              <Cloud/>
+            </div>
+            <div className="Birds">
+              <img src={Birds} alt="Birds"></img>
+            </div>
+            <Bouncy/>
+            <PlayBuilding/>
+            <div className="FirstScene">
+              <BackGround11/>
+              <BackGround12/>
+              <BackGround13/>
+              <BackGround14/>
+              <BackGround11/>
+            </div>
+            <div className="SecondScene">
+              <BackGround21/>
+              <BackGround22/>
+              <BackGround23/>
+              <BackGround24/>
+              <BackGround21/>
+            </div>
+            <div className="ThirdScene">
+              <BackGround31/>
+              <BackGround32/>
+              <BackGround33/>
+              <BackGround34/>
+              <BackGround31/>
+            </div>
           </div>
         </div>
       </div>

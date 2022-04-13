@@ -1,6 +1,6 @@
 export const initialState = {
     Score: "0000",
-    HighScore: "0000",
+    HighScore: "00000",
     GameStates : {
         Start : false,
         Pause: false,
