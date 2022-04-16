@@ -1,12 +1,13 @@
 export const initialState = {
     Score: "0000",
-    HighScore: "00000",
+    HighScore: "0000",
     GameStates : {
         Start : false,
         Pause: false,
         Resume: false,
         Restart: false,
         Quit: false,
+        GameOver: false
     }
 }
 
@@ -18,7 +19,8 @@ export const actionTypes = {
     PAUSE: "PAUSE",
     RESUME: "RESUME",
     RESTART: "RESTART",
-    QUIT: "QUIT"
+    QUIT: "QUIT",
+    GAMEOVER: "GAMEOVER"
 }
 
 const reducer = (state, action) => {
@@ -74,6 +76,14 @@ const reducer = (state, action) => {
                     Quit: action.Quit
                 }
             };
+        case actionTypes.GAMEOVER:
+            return {
+                ...state,
+                GameStates : {
+                    ...state.GameStates,
+                    GameOver: action.GameOver
+                }
+            }
                   
         default: 
             return state;

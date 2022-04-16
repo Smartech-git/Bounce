@@ -3,7 +3,7 @@ import React from 'react';
 function ObstacleThree() {
     return (
         <div className="ObstacleThree">
-           <svg className="ObsThree" xmlns="http://www.w3.org/2000/svg" width="68" height="69" viewBox="0 0 68 69" fill="none">
+           <svg className="ObsThree" xmlns="http://www.w3.org/2000/svg" width="91" height="92" viewBox="0 0 68 69" fill="none">
                 <g filter="url(#filter0_i_559_316)">
                 <g clip-path="url(#clip0_559_316)">
                 <rect x="11" y="9" width="44" height="60" fill="#C4C4C4"/>

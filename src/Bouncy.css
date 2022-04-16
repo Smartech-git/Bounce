@@ -7,13 +7,12 @@
     height: 150px;
     z-index: 11;
     bottom: 33px;
-    left: 10%;
-    /* background-color: black; */
+    left: 120px;
 }
 .Expressions {
     position: absolute;
     height: 64px;
-    width: max-content;
+    width: 66px;
     z-index: 2;
     right: 0;
 }

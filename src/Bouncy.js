@@ -61,10 +61,12 @@ function Bouncy() {
                 fill: "forwards"
             }
         );
+
         BCFref.current = BCF;
         BSHref.current = BSH;
         BSEref.current = BSE;
-        TrailRef.current = T
+        TrailRef.current = T;
+
     }, [])
 
     useEffect(() => {

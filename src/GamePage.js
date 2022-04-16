@@ -1,9 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
 import Birds from "./Characters/Images/Birds.gif"
 import InfoBar from './InfoBar';
-import PlayBuilding from './PlayBuilding';
+import Bundle from './Bundle';
 import Home from './Home';
 import PausePage from './PausePage';
+import GameOver  from './GameOver';
 import BackGround11 from './Characters/scenes/BackGround11';
 import BackGround12 from './Characters/scenes/BackGround12';
 import BackGround13 from './Characters/scenes/BackGround13';
@@ -18,12 +19,18 @@ import BackGround33 from './Characters/scenes/BackGround33';
 import BackGround34 from './Characters/scenes/BackGround34';
 import Cloud from './Characters/Cloud';
 import { useStateValue } from './StateProvider';
-import Bouncy from './Bouncy';
 import "./GamePage.css";
 
 
 function GamePage() {
   const [state, dispatch] = useStateValue();
+  const [Ff, setFf] = useState();
+  const [Sf, setSf] = useState();
+  const [Tf, setTf] = useState();
+  const [Pf, setPf] = useState();
+  const [Cf, setCf] = useState();
+  const [Trf, setTrf] = useState();
+  const [Bf, setBf] = useState();
   const FirstSceneRef = useRef();
   const SecondSceneRef = useRef();
   const ThirdSceneRef = useRef();
@@ -89,11 +96,11 @@ function GamePage() {
   let P = document.getElementsByClassName("PlayBuilding")[0].animate(
     [
       {transform: "translateX(0)"},
-      {transform: "translateX(-50%)"}
+      {transform: "translateX(-75%)"}
     ],
     {
       delay: t,
-      duration: 5*1000,
+      duration: 8*1000,
       easing: 'linear',
       iterations: Infinity
     }
@@ -102,7 +109,7 @@ function GamePage() {
   let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
     [
       {top: "60.6vh"},
-      {top: "30vh", offset: 0.5},
+      {top: "30vh", offset: 0.38},
       {top: "30vh", offset: 0.5},
       {top: "60.6vh"}
     ],
@@ -125,12 +132,19 @@ function GamePage() {
   );
 
   FirstSceneRef.current = F;
+  setFf(FirstSceneRef.current);
   SecondSceneRef.current = S;
+  setSf(SecondSceneRef.current)
   ThirdSceneRef.current = T;
+  setTf(ThirdSceneRef.current);
   PlatformRef.current = P;
+  setPf(PlatformRef.current);
   CloudRef.current = C;
+  setCf(CloudRef.current);
   BouncyRef.current = Bouncy;
+  setBf(BouncyRef.current)
   TrailsRef.current = Trails;
+  setTrf(TrailsRef.current);
  },[]);
  
 
@@ -175,6 +189,7 @@ function GamePage() {
       ThirdSceneRef.current.cancel();
       PlatformRef.current.cancel();
       CloudRef.current.cancel();
+      BouncyRef.current.cancel();
       
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
@@ -214,6 +229,7 @@ function GamePage() {
         <div className="GamePage">
           {state.GameStates.Start === false && <Home/>}
           {state.GameStates.Pause === true && <PausePage/>}
+          {state.GameStates.GameOver === true && <GameOver/>}
           <div className='Content'>
             <InfoBar/>
             <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
@@ -230,8 +246,15 @@ function GamePage() {
             <div className="Birds">
               <img src={Birds} alt="Birds"></img>
             </div>
-            <Bouncy/>
-            <PlayBuilding/>
+            <Bundle 
+              firstScene={Ff}
+              secondScene = {Sf}
+              thirdScene= {Tf}
+              platform = {Pf}
+              clouds = {Cf}
+              trails = {Trf}
+              bouncy = {Bf}
+            />
             <div className="FirstScene">
               <BackGround11/>
               <BackGround12/>

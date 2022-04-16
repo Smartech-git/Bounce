@@ -16,7 +16,7 @@ function PausePage() {
     useEffect(() => {
         let ID;
         if(resume === false) {
-            ID = setTimeout(()=>  {   
+            ID = setTimeout(() => {   
                 const action ={
                     type: actionTypes.PAUSE,
                     Pause: false

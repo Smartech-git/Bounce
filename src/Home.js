@@ -30,7 +30,7 @@ function Home() {
                 dispatch(action);
                 dispatch(action2);
             }, 500);
-        }
+        } 
         return(() => { 
             clearTimeout(ID);
             setUnmount("Unmount");
@@ -40,7 +40,7 @@ function Home() {
 
     return (
         <div className={`Home ${unmount}`}>
-            <div className="HomeFirstTab">
+            <div className="InnerTab">
                 <div className="HomeInfo">
                     <div className="Bounce">
                         <img src={Bounce} alt="Bounce" decoding='sync'></img>

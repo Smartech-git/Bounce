@@ -8,9 +8,8 @@ function PauseButton () {
     const [effect, setEffect] = useState();
 
     useEffect(() => {
-        let ID;
         if (effect === false) {
-            ID = setTimeout(() => {
+            
                 const action = {
                     type : actionTypes.PAUSE,
                     Pause : true
@@ -26,12 +25,8 @@ function PauseButton () {
                 dispatch(action);
                 dispatch(action2);
                 dispatch(action3);
-            }, 500);           
+                       
         }
-        return(() => {
-            clearTimeout(ID)
-         }) 
-
     }, [effect]);
 
     return (
