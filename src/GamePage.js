@@ -100,7 +100,7 @@ function GamePage() {
     ],
     {
       delay: t,
-      duration: 8*1000,
+      duration: 10*1000,
       easing: 'linear',
       iterations: Infinity
     }
@@ -150,12 +150,24 @@ function GamePage() {
 
   useEffect(() => {
     if (state.GameStates.Start === true) {
+      FirstSceneRef.current.cancel();
+      SecondSceneRef.current.cancel();
+      ThirdSceneRef.current.cancel();
+      PlatformRef.current.cancel();
+      CloudRef.current.cancel();
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
       ThirdSceneRef.current.play();
       PlatformRef.current.play();
       CloudRef.current.play();
-    } else if(state.GameStates.Start === false) {
+      BouncyRef.current.cancel();
+    }
+    if(state.GameStates.Start === false) {
+      FirstSceneRef.current.cancel();
+      SecondSceneRef.current.cancel();
+      ThirdSceneRef.current.cancel();
+      PlatformRef.current.cancel();
+      CloudRef.current.cancel();
       FirstSceneRef.current.pause();
       SecondSceneRef.current.pause();
       ThirdSceneRef.current.pause();
@@ -165,39 +177,35 @@ function GamePage() {
   }, [state.GameStates.Start]);
 
   useEffect(() => {
-    if(state.GameStates.Pause === true) {
+    if(state.GameStates.Pause === true || state.GameStates.GameOver === true) {
       FirstSceneRef.current.pause();
       SecondSceneRef.current.pause();
       ThirdSceneRef.current.pause();
       PlatformRef.current.pause();
-      CloudRef.current.pause();
+      BouncyRef.current.pause()
     }else if(state.GameStates.Resume === true) {
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
       ThirdSceneRef.current.play();
       PlatformRef.current.play();
-      CloudRef.current.play();
     }else if(state.GameStates.Quit === true ) {
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
       PlatformRef.current.cancel();
-      CloudRef.current.cancel();
     }else if(state.GameStates.Restart === true) {
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
       PlatformRef.current.cancel();
-      CloudRef.current.cancel();
       BouncyRef.current.cancel();
       
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
       ThirdSceneRef.current.play();
       PlatformRef.current.play();
-      CloudRef.current.play();
     }
-  }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart]);
+  }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart, state.GameStates.GameOver]);
 
   useEffect(() => {
     let ID;
@@ -251,7 +259,6 @@ function GamePage() {
               secondScene = {Sf}
               thirdScene= {Tf}
               platform = {Pf}
-              clouds = {Cf}
               trails = {Trf}
               bouncy = {Bf}
             />

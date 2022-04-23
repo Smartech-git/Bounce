@@ -37,6 +37,13 @@
     opacity: 0;
 }
 
+.Bouncy_Sad {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    left: 3.5px;
+}
+
 .trails {
     position: absolute;
     height: 64px;

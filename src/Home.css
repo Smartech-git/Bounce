@@ -14,7 +14,6 @@
     transform: translateY(-60px);
     opacity: 0;
     animation: fadeIn 0.5s ease forwards;
-    /* visibility: hidden; */
 }
 .Unmount {
     animation: unmount 0.9s ease forwards;
@@ -70,7 +69,7 @@
     /* background-color: white; */
 }
 
-.Bounce > img{
+.Bounce > img {
     width: 250px;
     height: 80px;
 }
@@ -82,7 +81,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.BounceEmoji > img {
+.BouncyDP {
     height: fit-content;
     width: 70px;
 }

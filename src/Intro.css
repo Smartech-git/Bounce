@@ -92,10 +92,10 @@
 
 @keyframes toggle {
     0% {
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
     }
     70% {
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
     }
     80% {
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);

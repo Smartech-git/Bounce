@@ -1,18 +1,19 @@
-.GameOver {
+.GameOverC {
     position: absolute;
     z-index: 12;
     height: 92%;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 95%;
     border-radius: 20px;
-    background: linear-gradient(105.19deg, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 98.66%);
+    /* background: linear-gradient(105.19deg, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 98.66%);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); */
     border-radius: 20px;
     transform: translateY(-60px);
-    opacity: 0;
+    opacity: 1;
     animation: fadeIn3 0.5s ease forwards;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -36,10 +37,59 @@
         opacity: 1;
     }
 }
-.GameOverTab {
-    width: 80%;
-    height: 80%;
-    background: #58D4DE;
-    border: 6px solid #09689E;
+.GameOverC img {
+   height: fit-content;
+   margin-top: 90px;
+   width: 700px; 
+}
+
+.Continue {
+    display: flex;
+    align-items: center;
+    margin-bottom: 200px;
+    justify-content: center;
+    height: 50px;
+    width: 250px;
     border-radius: 10px;
+    background: #FF9900;
+    border: 3px solid #990303;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+.conttrue {
+    animation: cont 0.19s linear
+}
+
+@keyframes cont {
+    0% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    70% {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    80% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71);
+    }
+    100% {
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.54), inset 2px -4px 3px rgba(0, 0, 0, 0.25), inset -1px 3px 4px rgba(255, 255, 255, 0.71); 
+    }
+}
+
+.Continue > span {
+    font-family: 'Mochiy Pop One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF
 }

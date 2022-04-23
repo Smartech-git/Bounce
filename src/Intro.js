@@ -8,7 +8,17 @@ export default function Intro () {
     const [toggle, setToggle] = useState();
     const [load, setLoad] = useState();
     const navigate = useNavigate();
-    
+    useEffect(() => {
+        let ScorePoints = {
+            score: '0000',
+            highScore: '0000'
+        }
+        if(localStorage.getItem("ScorePoints") === null){
+            localStorage.setItem("ScorePoints", JSON.stringify(ScorePoints));
+            console.log(localStorage.getItem("ScorePoints"))
+        }
+    }, [])
+
     useEffect(() => {
         let ID;
         if(toggle === false) {

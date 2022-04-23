@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Home.css';
 import Bounce from './Characters/Images/Bounce.png';
-import Emoji from './Characters/Images/Emoji.png';
+import BouncyDP from './Characters/BouncyDP';
 import Score from './Characters/Images/Score.png';
 import HighScore from './Characters/Images/HighScore.png';
 import HowToPlay from './Characters/Images/HowToPlay.png';
@@ -19,16 +19,23 @@ function Home() {
         let ID;
         if(letsGo === false) {
             ID = setTimeout(()=>  {
+                const action2 = {
+                    type: actionTypes.GAMEOVER,
+                    GameOver: false
+                }
+                
+                dispatch(action2);
                 const action = {
                     type : actionTypes.START,
                     Start: true
                 }
-                const action2 = {
+                dispatch(action);
+
+                const action3 = {
                     type : actionTypes.QUIT,
                     Start : false
                 }
-                dispatch(action);
-                dispatch(action2);
+                dispatch(action3);
             }, 500);
         } 
         return(() => { 
@@ -46,17 +53,15 @@ function Home() {
                         <img src={Bounce} alt="Bounce" decoding='sync'></img>
                     </div>
                     <div className="BounceProfile">
-                        <div className="BounceEmoji">
-                            <img src={Emoji} alt="BouceEmoji"></img>
-                        </div>
+                        <BouncyDP/>
                         <div className="ScorePoints">
                             <div className="ScoreHome">
                                 <img src={Score} alt="Score"></img>
-                                <span>{state.Score}</span>
+                                <span>{JSON.parse(localStorage.getItem("ScorePoints")).score}</span>
                             </div>
                             <div className="HighScoreHome">
                                 <img src={HighScore} alt="HighScore"></img>
-                                <span>{state.HighScore}</span>
+                                <span>{JSON.parse(localStorage.getItem("ScorePoints")).highScore}</span>
                             </div>
                         </div>
                     </div>

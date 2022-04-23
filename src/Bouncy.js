@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useLayoutEffect} from 'react';
 import BouncyShocked from './Characters/BouncyShocked';
 import BouncyConfused from './Characters/BouncyConfused';
 import BouncySerious from './Characters/BouncySerious';
+import BouncySad from './Characters/BouncySad';
 import './Bouncy.css';
 import {useStateValue} from './StateProvider';
 
@@ -32,7 +33,7 @@ function Bouncy() {
                 {opacity: 0, offset: 1}
             ], 
             { 
-                delay: + BCF.effect.getComputedTiming().duration,
+                delay: BCF.effect.getComputedTiming().duration,
                 duration: 1000,
                 fill: "forwards"
             }
@@ -71,6 +72,10 @@ function Bouncy() {
 
     useEffect(() => {
         if (state.GameStates.Start === true){
+            BCFref.current.cancel();
+            BSHref.current.cancel();
+            BSEref.current.cancel();
+            TrailRef.current.cancel();
             BCFref.current.play();
             BSHref.current.play();
             BSEref.current.play();
@@ -85,43 +90,54 @@ function Bouncy() {
 
     useEffect(() => {
         if(state.GameStates.Restart === true) {
-            BCFref.current.cancel();
-            BSHref.current.cancel();
-            BSEref.current.cancel();
-            TrailRef.current.cancel();
             BCFref.current.play();
             BSHref.current.play();
             BSEref.current.play();
             TrailRef.current.play();
+        } else if(state.GameStates.Pause === true){
+            BCFref.current.pause();
+            BSHref.current.pause();
+            BSEref.current.pause();
+            TrailRef.current.pause();
         }
-    }, [state.GameStates.Restart]);
+    }, [state.GameStates.Restart, state.GameStates.Pause]);
     
-        
+    useEffect(() => {
+        if(state.GameStates.GameOver === true){
+            BCFref.current.cancel();
+            BSHref.current.cancel();
+            BSEref.current.cancel();
+            TrailRef.current.cancel();
+        }
+    }, [state.GameStates.GameOver]);
+
     return (
         <div className="Bouncy">
             <div className="Expressions">
                 <BouncyShocked/>
                 <BouncyConfused/>
                 <BouncySerious/>
+                {state.GameStates.GameOver && <BouncySad/>}
             </div>
-            <div className="trails">
-                <svg className='trailsSVG' xmlns="http://www.w3.org/2000/svg" width="105" height="64" viewBox="0 0 105 70" fill="none">
-                    <g filter="url(#filter0_f_531_324)">
-                    <path d="M4 16L101 4V66L4 54.5V16Z" fill="url(#paint0_linear_531_324)"/>
-                    </g>
-                    <defs>
-                    <filter id="filter0_f_531_324" x="0" y="0" width="105" height="70" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                    <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_531_324"/>
-                    </filter>
-                    <linearGradient id="paint0_linear_531_324" x1="101" y1="35" x2="8.61904" y2="35" gradientUnits="userSpaceOnUse">
-                    <stop offset="0.159436" stop-color="#FF0000"/>
-                    <stop offset="1" stop-color="white" stop-opacity="0"/>
-                    </linearGradient>
-                    </defs>
-                </svg>
-            </div>
+                <div className="trails">
+                    <svg className='trailsSVG' xmlns="http://www.w3.org/2000/svg" width="105" height="64" viewBox="0 0 105 70" fill="none">
+                        <g filter="url(#filter0_f_531_324)">
+                        <path d="M4 16L101 4V66L4 54.5V16Z" fill="url(#paint0_linear_531_324)"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_f_531_324" x="0" y="0" width="105" height="70" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_531_324"/>
+                        </filter>
+                        <linearGradient id="paint0_linear_531_324" x1="101" y1="35" x2="8.61904" y2="35" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.159436" stop-color="#FF0000"/>
+                        <stop offset="1" stop-color="white" stop-opacity="0"/>
+                        </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            
         </div>
     );
 }

@@ -9,7 +9,6 @@ function PauseButton () {
 
     useEffect(() => {
         if (effect === false) {
-            
                 const action = {
                     type : actionTypes.PAUSE,
                     Pause : true
