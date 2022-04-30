@@ -7,30 +7,33 @@
     position: absolute;
     width: fit-content;
     left: 0px;
+    /* transform: translateX(-85%); */
 }
 .BTone {
     /* background-color: red; */
     position: relative;
     height: 100%;
-    width: 1439px;
+    width: 1400px;
     margin-left: -8px ;
 }
-
-.ObstacleOne {
+.ObstacleOne, .ObstacleTwo, .ObstacleThree {
+    position: absolute;
+}
+.Obstacle1, .Obstacle2, .Obstacle3 {
     position: absolute;
     right: 40px;
+}
+.Ob1 {
+    position: absolute;
     top: 6px
 }
-.ObstacleTwo {
-    right: 0;
+.Ob2 {
     position: absolute;
-    top: 20px;
+    top: 15px;
 }
 
-.ObstacleThree {
+.Ob3{
     position: absolute;
-    right: 0;
-    top: 8px;
 }
 .BuildingTop {
     top: 95px;

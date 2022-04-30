@@ -8,7 +8,8 @@ function PauseButton () {
     const [effect, setEffect] = useState();
 
     useEffect(() => {
-        if (effect === false) {
+        if(state.GameStates.GameOver === false){
+            if (effect === false) {
                 const action = {
                     type : actionTypes.PAUSE,
                     Pause : true
@@ -23,10 +24,11 @@ function PauseButton () {
                 }
                 dispatch(action);
                 dispatch(action2);
-                dispatch(action3);
-                       
+                dispatch(action3);      
+            }
         }
-    }, [effect]);
+        
+    }, [effect, state.GameStates.GameOver]);
 
     return (
         <div className= {`PauseBotton ${effect}`} onMouseDown={()=> setEffect("Effect")} onMouseUp={() => setEffect(false)}>

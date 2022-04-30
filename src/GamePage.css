@@ -70,7 +70,7 @@
     width: 100px;
     transform: translateX(100vw);
     height: fit-content;
-    animation:  secondanima 75s linear 30s infinite;
+    animation:  secondanima 65s linear 40s infinite;
 }
 
 @keyframes secondanima {
@@ -142,3 +142,27 @@
 .BackGround3 {
     width: 85vw;
 }
+.HighscorePop{
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.4);
+}
+.Poptrue {
+   animation: Popp 1.5s ease;
+}
+
+@keyframes Popp {
+    0%{
+        opacity: 0;
+        transform: scale(0.4);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);  
+    }
+}
+

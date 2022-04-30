@@ -4,6 +4,7 @@ import Score from './Characters/Images/Score.png';
 import HighScore from './Characters/Images/HighScore.png'
 import {useStateValue} from './StateProvider';
 import "./InfoBar.css";
+import { actionTypes } from './Reducer';
 
 function InfoBar() {
   const [state, dispatch] = useStateValue();
@@ -15,26 +16,27 @@ function InfoBar() {
 
 
   useLayoutEffect(() => {
-    if(state.GameStates.Start === true){
+    if(state.GameStates.Start === true || state.GameStates.Restart === true){
       setScore("000000");
       arr.current = ['0', '0', '0', '0', '0', '0'];
       point.current = 0;
       T.current = 3000;
       setX(false);
     }
-  }, [state.GameStates.Start]);
-  
-  useLayoutEffect(() => {
-    if(state.GameStates.Restart === true){
-      setScore("000000");
-      arr.current = ['0', '0', '0', '0', '0', '0'];
-      point.current = 0;
-      T.current = 3000;
-      setX(false);
-    }
-  }, [state.GameStates.Restart]);
+  }, [state.GameStates.Start, state.GameStates.Restart]);
+
+  // useLayoutEffect(() => {
+  //   if(state.GameStates.Restart === true){
+  //     setScore("000000");
+  //     arr.current = ['0', '0', '0', '0', '0', '0'];
+  //     point.current = 0;
+  //     T.current = 3000;
+  //     setX(false);
+  //   }
+  // }, [state.GameStates.Restart]);
 
   useEffect(() => {
+    // localStorage.clear()
     let ID2;
     let ID
     if((state.GameStates.Start === true && state.GameStates.GameOver === false && X === false)){
@@ -59,15 +61,26 @@ function InfoBar() {
           } else{
             setScore(point.current.toString());
           }
+          if(JSON.parse(localStorage.getItem("ScorePoints")).highScore >= 1){
+            if(point.current > JSON.parse(localStorage.getItem("ScorePoints")).highScore){
+              if(state.HighScore === false){
+                const action = {
+                  type: actionTypes.HIGHSCORE,
+                  HighScore: true
+                }
+                dispatch(action);
+              }
+            }
+          }
         }, 100); 
       }, T.current);    
-    } 
-    
+    }
     return(() => {
       clearInterval(ID)
       clearTimeout(ID2);
     }) 
-  }, [state.GameStates.Start, state.GameStates.Resume, state.GameStates.GameOver, arr.current,  X]);
+  }, [state.GameStates.Start, state.GameStates.Resume, state.GameStates.GameOver, X, state.HighScore]);
+
 
   useLayoutEffect(() => {
     if(state.GameStates.Quit === true){
@@ -80,6 +93,7 @@ function InfoBar() {
       setX(false)
       let ScorePointUpdate = JSON.parse(localStorage.getItem("ScorePoints"));
       ScorePointUpdate.score = point.current.toString();
+
       if(point.current >= parseInt(ScorePointUpdate.highScore)){
         ScorePointUpdate.highScore = point.current.toString();
       }
@@ -92,6 +106,7 @@ function InfoBar() {
       setX(true);
     }
   }, [state.GameStates.Quit, state.GameStates.GameOver, state.GameStates.Resume, state.GameStates.Pause]);
+  
 
   return (
       <div className="InfoBar">

@@ -33,6 +33,11 @@ function GameOver() {
                     Pause: false,
                 };
                 dispatch(action4);
+                const action5 ={
+                    type: actionTypes.HIGHSCORE,
+                    HighScore: false,
+                }
+                dispatch(action5)
             }, 500);
         }
 

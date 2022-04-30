@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useLayoutEffect, useState, useRef} from 'react';
 import Birds from "./Characters/Images/Birds.gif"
 import InfoBar from './InfoBar';
 import Bundle from './Bundle';
@@ -20,17 +20,12 @@ import BackGround34 from './Characters/scenes/BackGround34';
 import Cloud from './Characters/Cloud';
 import { useStateValue } from './StateProvider';
 import "./GamePage.css";
+import HighScorex from './Characters/Images/HighScorex.png';
 
 
 function GamePage() {
   const [state, dispatch] = useStateValue();
-  const [Ff, setFf] = useState();
-  const [Sf, setSf] = useState();
-  const [Tf, setTf] = useState();
-  const [Pf, setPf] = useState();
-  const [Cf, setCf] = useState();
-  const [Trf, setTrf] = useState();
-  const [Bf, setBf] = useState();
+  const [Pop, setPop] = useState();
   const FirstSceneRef = useRef();
   const SecondSceneRef = useRef();
   const ThirdSceneRef = useRef();
@@ -39,8 +34,10 @@ function GamePage() {
   const BouncyRef = useRef();
   const TrailsRef = useRef();
   const [X, setX] = useState(false);
+  const speed = useRef(1);
+  
  
- useEffect(() => {
+  useEffect(() => {
    let t = 3000;
    let C = document.getElementsByClassName("Clouds")[0].animate(
     [
@@ -49,7 +46,7 @@ function GamePage() {
     ],
     { 
       delay: t,
-      duration: 800*1000,
+      duration: 300*1000,
       easing: 'linear',
       iteration: Infinity
     }
@@ -74,7 +71,7 @@ function GamePage() {
     ],
     {
       delay: t,
-      duration: 100000,
+      duration: 75000,
       easing: 'linear',
       iterations: Infinity
     }
@@ -87,7 +84,7 @@ function GamePage() {
     ],
     {
       delay: t,
-      duration: 200000,
+      duration: 112500,
       easing: 'linear',
       iterations: Infinity
     }
@@ -95,12 +92,12 @@ function GamePage() {
 
   let P = document.getElementsByClassName("PlayBuilding")[0].animate(
     [
-      {transform: "translateX(0)"},
+      {transform: "translateX(0%)"},
       {transform: "translateX(-75%)"}
     ],
     {
       delay: t,
-      duration: 10*1000,
+      duration: 9000,
       easing: 'linear',
       iterations: Infinity
     }
@@ -109,8 +106,8 @@ function GamePage() {
   let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
     [
       {top: "60.6vh"},
-      {top: "30vh", offset: 0.38},
-      {top: "30vh", offset: 0.5},
+      {top: "28vh", offset: 0.38},
+      {top: "28vh", offset: 0.5},
       {top: "60.6vh"}
     ],
     {
@@ -132,21 +129,40 @@ function GamePage() {
   );
 
   FirstSceneRef.current = F;
-  setFf(FirstSceneRef.current);
   SecondSceneRef.current = S;
-  setSf(SecondSceneRef.current)
   ThirdSceneRef.current = T;
-  setTf(ThirdSceneRef.current);
   PlatformRef.current = P;
-  setPf(PlatformRef.current);
   CloudRef.current = C;
-  setCf(CloudRef.current);
   BouncyRef.current = Bouncy;
-  setBf(BouncyRef.current)
   TrailsRef.current = Trails;
-  setTrf(TrailsRef.current);
  },[]);
  
+  useEffect(() =>{
+   let ID;
+   if(state.GameStates.Start === true && state.GameStates.Pause === false){
+    speed.current=1;
+    ID = setInterval(() =>{
+      speed.current = speed.current + 0.3;
+      PlatformRef.current.updatePlaybackRate(speed.current);
+      PlatformRef.current.ready.then(() =>{
+        console.log(PlatformRef.current.playbackRate);
+      });
+      FirstSceneRef.current.updatePlaybackRate(speed.current);
+      SecondSceneRef.current.updatePlaybackRate(speed.current);
+      ThirdSceneRef.current.updatePlaybackRate(speed.current);
+     }, 30*1000);
+    } else if(state.GameStates.Start === false){
+      speed.current=1;
+      PlatformRef.current.updatePlaybackRate(1);
+      FirstSceneRef.current.updatePlaybackRate(1);
+      SecondSceneRef.current.updatePlaybackRate(1);
+      ThirdSceneRef.current.updatePlaybackRate(1);
+     }
+    return(() =>{
+      clearInterval(ID)
+    })
+ }, [state.GameStates.Start, state.GameStates.Pause]);
+
 
   useEffect(() => {
     if (state.GameStates.Start === true) {
@@ -194,6 +210,7 @@ function GamePage() {
       ThirdSceneRef.current.cancel();
       PlatformRef.current.cancel();
     }else if(state.GameStates.Restart === true) {
+      speed.current = 1;
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
@@ -229,12 +246,22 @@ function GamePage() {
       TrailsRef.current.pause();
     }   
   }
+
+  useEffect(() =>{
+    setPop(false);
+    if(state.HighScore === true){
+      setPop(true);
+    }
+  }, [state.HighScore]);
  
   return (
     <div className='Sensitive'>
       <div className='SensitiveTab' onMouseDown={HandleJump}></div>
       <div className="BackGC">
         <div className="GamePage">
+          <div className={`HighscorePop Pop${Pop}`}>
+            <img src={HighScorex} alt="High Score"></img>
+          </div>
           {state.GameStates.Start === false && <Home/>}
           {state.GameStates.Pause === true && <PausePage/>}
           {state.GameStates.GameOver === true && <GameOver/>}
@@ -254,14 +281,7 @@ function GamePage() {
             <div className="Birds">
               <img src={Birds} alt="Birds"></img>
             </div>
-            <Bundle 
-              firstScene={Ff}
-              secondScene = {Sf}
-              thirdScene= {Tf}
-              platform = {Pf}
-              trails = {Trf}
-              bouncy = {Bf}
-            />
+            <Bundle/>
             <div className="FirstScene">
               <BackGround11/>
               <BackGround12/>

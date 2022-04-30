@@ -1,5 +1,6 @@
 
 export const initialState = {
+    HighScore: false,
     GameStates : {
         Start : false,
         Pause: false,
@@ -10,8 +11,7 @@ export const initialState = {
     }
 }
 export const actionTypes = {
-    SETSCORE: "SETSCORE",
-    SETHIGHSCORE: "SETHIGHSCORE",
+    HIGHSCORE: "HIGHSCORE",
     START: "START",
     PAUSE: "PAUSE",
     RESUME: "RESUME",
@@ -21,17 +21,11 @@ export const actionTypes = {
 }
 const reducer = (state, action) => {
     switch (action.type) {
-        // case actionTypes.SETSCORE:
-        //     let ScorePoints = JSON.parse(localStorage.getItem("ScorePoints"));
-        //     ScorePoints.score = action.Score;
-        //     // return {
-        //     //     ...state,
-        //     // }
-        // case actionTypes.SETHIGHSCORE:
-        //     return {
-        //         ...state,
-        //         HighScore: action.HighScore
-        //     };
+        case actionTypes.HIGHSCORE:
+            return {
+                ...state,
+                HighScore : action.HighScore
+            };
         case actionTypes.START: 
             return {
                 ...state,
