@@ -1,7 +1,9 @@
 import React, {useState, useEffect, useRef, useLayoutEffect} from 'react';
 import PauseButton from './PauseButton';
 import Score from './Characters/Images/Score.png';
+import ScoreXS from './Characters/Images/ScoreXS.png';
 import HighScore from './Characters/Images/HighScore.png'
+import HighScoreXS from './Characters/Images/HighScoreXS.png';
 import {useStateValue} from './StateProvider';
 import "./InfoBar.css";
 import { actionTypes } from './Reducer';
@@ -114,11 +116,13 @@ function InfoBar() {
           <PauseButton/>
           <div className="ScoreTab">
             <div className="Score">
-              <img src={Score} alt="Score"></img>
+              <img className='NavScore_ImgL' src={Score} alt="Score"></img>
+              <img className='NavScore_ImgXS' src={ScoreXS} alt="Score"></img>
               <span>{score}</span> 
             </div>
             <div className="HighScore">
-              <img src={HighScore} alt="HighScore"></img>
+              <img className="NavHighScore_ImgL" src={HighScore} alt="HighScore"></img>
+              <img className="NavHighScore_ImgXS" src={HighScoreXS} alt="HighScore"></img>
               <span>{JSON.parse(localStorage.getItem("ScorePoints")).highScore}</span>
             </div>
           </div>

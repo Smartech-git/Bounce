@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
+import {Route, Routes} from 'react-router-dom';
 import './App.css';
 import Intro from './Intro';
-import GamePage from './GamePage';
-import {Route, Routes} from 'react-router-dom';
+import Loading from './Loading';
+const GamePage = lazy(() => import('./GamePage'));
+// import GamePage from './GamePage';
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path ="/" element={<Intro/>}/>
-        <Route path ="gamemode" element={<GamePage/>}/>
-      </Routes>
+      <Suspense fallback={<Loading/>}>
+        <Routes>
+          <Route path ="/" element={<Intro/>}/>
+          <Route path ="gamemode" element={<GamePage/>}/>
+        </Routes>
+      </Suspense> 
     </div>
   );
 }

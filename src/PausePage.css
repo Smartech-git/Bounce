@@ -74,6 +74,7 @@
     height: 62px;
 }
 .Options {
+    margin-top: 10px;
     height: 180px;
     display: flex;
     flex-direction: column;
@@ -123,4 +124,43 @@
     text-align: center;
     letter-spacing: 0.04em;
     color: #FFFFFF
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .PausePage{
+        border-radius: 10px;
+    }
+    .InnerTab{
+        border-width: 4px;
+    }
+    .Pause > img {
+        width: 150px;
+        height: fit-content;
+    }
+    .Options {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+    .Resume, .Restart, .Quit {
+        border-width: 2px;
+        height: 30px;
+        width: 160px;
+        border-radius: 8px;
+    }
+    .Resume > span, .Restart > span, .Quit > span {
+        font-size: 12px;
+
+    }
+    
+}
+@media screen and (max-height: 480px) and (orientation: landscape){
+    .Options{
+        margin-bottom: 60px;
+    }
+}
+@media screen and (max-height: 350px) and (orientation: landscape){
+    .Options{
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
 }

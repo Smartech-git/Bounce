@@ -21,10 +21,13 @@
     margin-right: 20px;
 }
 
-.Score > img {
+.NavScore_ImgL{
     width: fit-content;
     height: 28px;
     margin-right: 10px;
+}
+.NavScore_ImgXS {
+    display: none;
 }
 .Score > span {
     font-family: 'Mochiy Pop One';
@@ -40,10 +43,13 @@
     display: flex;
     align-items: center;
 }
-.HighScore > img {
+.NavHighScore_ImgL {
     width: fit-content;
     height: 24px;
     margin-right: 10px;
+}
+.NavHighScore_ImgXS {
+    display: none;
 }
 
 .HighScore > span {
@@ -55,4 +61,35 @@
     letter-spacing: 0.1em;
     color: #FFFFFF;
     -webkit-text-stroke: 1px #FF9900;
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .InfoBar{
+        top: 10px;
+    }
+    .InContent{
+        padding: 15px 25px 0px 25px ;
+    }
+    .NavScore_ImgL{
+       display: none;
+    }
+    .NavScore_ImgXS{
+        display: block;
+        margin-right: 10px;
+    }
+    .Score > span {
+        font-size: 14px;
+        font-weight: 200;
+    }
+    .NavHighScore_ImgL{
+        display: none;
+    }
+    .NavHighScore_ImgXS {
+        display: block;
+        margin-right: 10px;
+    }
+    .HighScore > span{
+        font-size: 14px;
+        font-weight: 200;
+    }
 }

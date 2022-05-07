@@ -10,29 +10,23 @@ function PlayBuilding () {
     <div className='PlayBuilding'>
       <div className="BTone">
         <div className='Obstacle1' style={{height: "100px", width: "90px"}}>
-          <div className="Ob1">
-            <ObstacleOne/>
-          </div>
+          <ObstacleOne/>
         </div>
         <BuildingTop/>
       </div>
-      <div className="BTone">
+      <div className="BTone fix_positionOne">
         <div className='Obstacle2' style={{height: "100px", width: "90px"}}>
-          <div className="Ob2">
-            <ObstacleTwo/>
-          </div>
+          <ObstacleTwo/>
         </div>
         <BuildingTop/>
       </div> 
-      <div className="BTone">
+      <div className="BTone fix_positionTwo">
         <div className='Obstacle3' style={{height: "100px", width: "90px"}}>
-          <div className='Ob3'>
-            <ObstacleThree/>
-          </div>
+          <ObstacleThree/>
         </div>
         <BuildingTop/>
       </div> 
-      <div className="BTone">
+      <div className="BTone fix_positionThree">
         <BuildingTop/>
       </div>  
     </div> 

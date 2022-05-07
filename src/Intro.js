@@ -37,7 +37,7 @@ export default function Intro () {
         if(load === "start") {
             ID = setTimeout(() => {
                 navigate("/gamemode");
-           },7000);
+           }, 7000);
         }
 
         return(() =>{

@@ -2,7 +2,7 @@ import React from 'react';
 
 function BackGround21() {
     return (
-        <div className="BackGround">
+        <div className="BackGround" >
            <svg className="scene2" xmlns="http://www.w3.org/2000/svg" width="1437" height="431" viewBox="0 0 1437 431" fill="none">
                 <rect x="347" y="121" width="260" height="310" fill="#5FAF88"/>
                 <path d="M665 163H1107V431H665V163Z" fill="#5FAF88"/>

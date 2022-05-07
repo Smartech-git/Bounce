@@ -105,10 +105,10 @@ function GamePage() {
     
   let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
     [
-      {top: "60.6vh"},
-      {top: "28vh", offset: 0.38},
-      {top: "28vh", offset: 0.5},
-      {top: "60.6vh"}
+      {bottom: "70px"},
+      {bottom: "40vh", offset: 0.38},
+      {bottom: "40vh", offset: 0.5},
+      {bottom: "70px"}
     ],
     {
       duration: 700,
@@ -267,7 +267,7 @@ function GamePage() {
           {state.GameStates.GameOver === true && <GameOver/>}
           <div className='Content'>
             <InfoBar/>
-            <div className="Sun" style={{position: "absolute", top: 60, left: 200}}>
+            <div className="Sun" style={{position: "absolute", top: "15vh", left: "14vw"}}>
               <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
                 <circle cx="35" cy="35" r="35" fill="#BDCA93"/>
               </svg>

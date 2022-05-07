@@ -16,3 +16,9 @@
         transform: scale(1);
     }
 }
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .PauseB{
+        width: 30px;
+        height: 30px;
+    }
+}

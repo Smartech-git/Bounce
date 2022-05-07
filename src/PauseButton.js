@@ -32,7 +32,7 @@ function PauseButton () {
 
     return (
         <div className= {`PauseBotton ${effect}`} onMouseDown={()=> setEffect("Effect")} onMouseUp={() => setEffect(false)}>
-           <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+           <svg className="PauseB"  xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <g filter="url(#filter0_d_198_145)">
                 <rect x="5.5" y="3.5" width="37" height="37" rx="8.5" fill="#FF9900" stroke="#990303" stroke-width="3"/>
                 <rect x="16" y="13" width="3" height="17" fill="white"/>

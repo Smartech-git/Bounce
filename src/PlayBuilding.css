@@ -1,45 +1,67 @@
 
 .PlayBuilding {
     z-index: 10;
-    top: 61.5vh;
-    height: 300px;
+    bottom: -30px;
     display: flex;
+    align-items: baseline;
     position: absolute;
     width: fit-content;
-    left: 0px;
+    left: -20px;
     /* transform: translateX(-85%); */
 }
-.BTone {
-    /* background-color: red; */
+.BTone{
     position: relative;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
     width: 1400px;
-    margin-left: -8px ;
 }
-.ObstacleOne, .ObstacleTwo, .ObstacleThree {
-    position: absolute;
+.fix_positionOne {
+    left: -25px;
 }
-.Obstacle1, .Obstacle2, .Obstacle3 {
-    position: absolute;
-    right: 40px;
+.fix_positionTwo{
+   left: -50px 
 }
-.Ob1 {
-    position: absolute;
-    top: 6px
-}
-.Ob2 {
-    position: absolute;
-    top: 15px;
+.fix_positionThree{
+    left: -75px
 }
 
-.Ob3{
+.Obstacle1, .Obstacle2, .Obstacle3 {
     position: absolute;
+    Top: 0px;
+    right: 40px ;
 }
-.BuildingTop {
-    top: 95px;
+.Obstacle1 {
+    top: 8px;
+}
+.Obstacle2{
+    top: 8px;
+}
+.BuildingTop{
+    bottom: 0px;
     width: fit-content;
     position: absolute;
+    /* display: none; */
 }
-.Platform {
-    width: max-content;
+
+@media screen and (max-width: 900px) and (orientation: landscape){
+    .BTone{
+        width: 1100px;
+    }
+    .Platform { 
+        width: 1100px;
+    }
+    .PlayBuilding{
+        bottom: -24px;
+    }
+    .ObstacleOne > svg, .ObstacleTwo > svg, .ObstacleThree > svg{
+        height: 60px;
+    }
+    .Obstacle1, .Obstacle2, .Obstacle3{
+        top: 55px;
+    }
+    
 }
+/* @media screen and (max-width: 500px) and ori {
+    
+} */

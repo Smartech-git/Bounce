@@ -8,7 +8,7 @@
 
 .SensitiveTab {
     position: absolute;
-    height: 80vh;
+    height: 75vh;
     bottom: 0;
     width: 100%;
     z-index: 11;
@@ -31,7 +31,7 @@
 }
 .GamePage {
     position: relative;
-    border-radius: 20px;
+    border-radius: 24px;
     height: 100%;
     width: 100%;
     background: linear-gradient(180deg, #72CBBA 0%, #C9DD9D 46.93%);
@@ -43,14 +43,14 @@
 }
 .Content {
     position: relative;
-    border-radius: 20px;
     height: 100%;
     width: 100%;
 }
 
 .Clouds {
-    display: flex;
-    top: 20px;
+    /* background-color: rebeccapurple; */
+    display: flex; 
+    top: 4vh;
     width: max-content;
     position: absolute;
     transform: translateX(0);
@@ -60,11 +60,13 @@
 }
 .cloudSvg {
     position: relative;
-    width: 100%
+    width: 100%;
 }
-
+.BundleB{
+    background-color: red;
+}
 .Birds {
-    top: 200px;
+    top: 24vh;
     z-index: 4;
     position: absolute;
     width: 100px;
@@ -166,3 +168,33 @@
     }
 }
 
+@media screen and (max-width: 900px) and (orientation: landscape){
+    .BackGC{
+        width: 90vw;  
+    }
+    .GamePage {
+        border-width: 4px;
+        border-radius: 12px;
+    }
+    .Clouds{
+        top: -4vh;
+    }
+    .Cloud {
+        width: 140vw;
+    }
+    .Birds{
+        width: 70px;
+    }
+    .Sun > svg {
+        width: 50px;
+    }
+    .FirstScene {
+        bottom: -80px;
+    }
+    .SecondScene{
+        bottom: -50px;
+    }
+    .ThirdScene{
+        bottom: -100px;
+    }
+} 

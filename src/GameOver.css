@@ -93,3 +93,19 @@
     letter-spacing: 0.04em;
     color: #FFFFFF
 }
+@media screen and (max-height: 900px) and (orientation: landscape){
+    .GameOverC img {
+        width: 400px;
+        margin-top: 60px;
+    }
+    .Continue {
+        margin-bottom:90px;
+        border-radius: 8px;
+        height: 35px;
+        border-width: 2px;
+        width: 180px;
+    }
+    .Continue > span {
+        font-size: 14px;
+    }
+}

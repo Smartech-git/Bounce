@@ -4,7 +4,7 @@ import './Emoji.css';
 export default function Emoji () {
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="105" viewBox="0 0 100 105" fill="none">
+        <svg className='Emoji' xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 105" fill="none">
             <g filter="url(#filter0_f_72_36)">
             <ellipse cx="52" cy="99.5" rx="35" ry="3.5" fill="black" fill-opacity="0.8"/>
             </g>

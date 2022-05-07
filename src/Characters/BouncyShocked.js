@@ -2,7 +2,7 @@
 function BouncyShocked() {
     return (
         <div className='Bouncy_Shocked'>
-           <svg xmlns="http://www.w3.org/2000/svg" width="69" height="63" viewBox="0 0 69 63" fill="none">
+           <svg className="BSH" xmlns="http://www.w3.org/2000/svg" width="69" height="63" viewBox="0 0 69 63" fill="none">
                 <g filter="url(#filter0_i_510_316)">
                 <rect width="63" height="63" rx="31.5" fill="#FF0000"/>
                 </g>

@@ -2,7 +2,7 @@
 function BuildingTop() {
     return (
         <div className="BuildingTop">
-            <svg className="Platform" xmlns="http://www.w3.org/2000/svg" width="1439" height="104" viewBox="0 0 1439 104" fill="none">
+            <svg className="Platform" xmlns="http://www.w3.org/2000/svg" width="1400" height="100" viewBox="0 0 1439 104" fill="none">
                 <g clip-path="url(#clip0_121_181)" filter="url(#filter0_d_121_181)">
                 <rect x="4" width="1431" height="96" fill="white"/>
                 <g filter="url(#filter1_i_121_181)">

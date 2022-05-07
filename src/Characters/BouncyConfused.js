@@ -3,7 +3,7 @@ import React from 'react';
 function BouncyConfused() {
     return (
         <div className="Bouncy_Confused">
-            <svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 63 63" fill="none">
+            <svg className='BCF' xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 63 63" fill="none">
                 <g filter="url(#filter0_i_551_331)">
                 <rect width="63" height="63" rx="31.5" fill="#FF0000"/>
                 </g>

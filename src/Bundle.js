@@ -69,7 +69,7 @@ function Bundle(){
         })
     });
     return (
-        <div className="Bundle">
+        <div className="BundleB">
           <Bouncy/>
           <PlayBuilding/>  
         </div>

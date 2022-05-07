@@ -8,8 +8,8 @@
     height: 85vh;
     width: 85vw;
     max-width: 1440px;
-    max-height: 600px;
-    border-radius: 10px;
+    max-height: 800px;
+    border-radius: 24px;
     background: #58D4DE;
     border: 6px solid #09689E;
 }
@@ -19,8 +19,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50%;
-    width: 100%;
 }
 .Bounce {
     position: relative;
@@ -29,8 +27,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
 
+}
 .BounceText {
     position: relative;
     top: -30px;
@@ -72,7 +70,7 @@
     align-items: center;
     height: 50px;
     width: 140px;
-    padding-bottom: 4px;
+    /* padding-bottom: 4px; */
     background: #FF9900;
     border: 3px solid #990303;
     box-sizing: border-box;
@@ -124,7 +122,7 @@
     height: 60px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 18px;
     display: flex;
@@ -132,4 +130,51 @@
     text-align: center;
     letter-spacing: 0.04em;
     color: rgba(0, 0, 0, 0.40);
+}
+
+@media screen and (max-width: 900px ) and (orientation: landscape){
+    .Intro {
+        border-width: 4px;
+        width: 90vw;
+        border-radius: 12px;
+    }
+    .Emoji{
+       width: 50px;
+       height: 50px; 
+    }
+    .Bounce{
+        position: relative;
+        top: 10px;
+    }
+    .BounceText{
+        top: -20px;
+    }
+    .BounceText > img {
+        width: 140px;
+        height: fit-content;
+    }
+    .Info{
+        font-size: 8px;
+        top: -30px;
+        width: 190px;
+        line-height: 14px;
+    }
+    .Botton {
+        position: relative;
+        top: -20px;
+        height: 35px;
+        width: 100px;
+    }
+    .Botton > p {
+        font-size: 14px;
+    }
+    .loading {
+        position: relative;
+        top: -20px;
+        border-width: 2px;
+        width: 150px;
+    }
+    .loadStatus{
+        height: 4px;
+    }
 }
