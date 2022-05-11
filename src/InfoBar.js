@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef, useLayoutEffect} from 'react';
 import PauseButton from './PauseButton';
-import Score from './Characters/Images/Score.png';
+import Score from './Characters/Images/ScoreS.png';
 import ScoreXS from './Characters/Images/ScoreXS.png';
-import HighScore from './Characters/Images/HighScore.png'
+import HighScore from './Characters/Images/HighScoreS.png'
 import HighScoreXS from './Characters/Images/HighScoreXS.png';
 import {useStateValue} from './StateProvider';
 import "./InfoBar.css";

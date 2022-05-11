@@ -100,7 +100,7 @@
 .Score_ImgLarge {
     height: fit-content;
     margin-right: 15px;
-    width: 68px;
+    /* width: 68px; */
 }
 .Score_ImgSmall {
     display: none;
@@ -108,7 +108,7 @@
 .HighScore_ImgLarge {
     height: fit-content;
     margin-right: 15px;
-    width: 120px;
+    /* width: 120px; */
 }
 .HighScore_ImgSmall {
     display: none;

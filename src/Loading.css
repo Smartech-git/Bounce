@@ -22,7 +22,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    border: 2px solid #990303;
+    border: 3px solid #990303;
     background-color: #FF9900;
 }
 .point:nth-child(1){
@@ -115,5 +115,6 @@
     .point{
         width: 4px;
         height: 4px;
+        border-width: 1px;
     }
 }

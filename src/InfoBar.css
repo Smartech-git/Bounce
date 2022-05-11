@@ -22,8 +22,8 @@
 }
 
 .NavScore_ImgL{
-    width: fit-content;
-    height: 28px;
+    /* width: fit-content;
+    height: 28px; */
     margin-right: 10px;
 }
 .NavScore_ImgXS {
@@ -44,8 +44,8 @@
     align-items: center;
 }
 .NavHighScore_ImgL {
-    width: fit-content;
-    height: 24px;
+    /* width: fit-content;
+    height: 28px; */
     margin-right: 10px;
 }
 .NavHighScore_ImgXS {
@@ -56,7 +56,7 @@
     font-family: 'Mochiy Pop One';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 23px;
     letter-spacing: 0.1em;
     color: #FFFFFF;

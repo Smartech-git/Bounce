@@ -33,6 +33,12 @@
     position: relative;
     top: -30px;
 }
+.Intro-BounceL {
+    display: block;
+}
+.Intro-BounceS {
+    display: none;
+}
 .loading {
     width: 250px;
     height: fit-content;
@@ -149,13 +155,15 @@
     .BounceText{
         top: -20px;
     }
-    .BounceText > img {
-        width: 140px;
-        height: fit-content;
+    .Intro-BounceL {
+        display: none;
+    }
+    .Intro-BounceS{
+        display: block;
     }
     .Info{
         font-size: 8px;
-        top: -30px;
+        top: -40px;
         width: 190px;
         line-height: 14px;
     }
@@ -164,6 +172,8 @@
         top: -20px;
         height: 35px;
         width: 100px;
+        border-width: 2px;
+        border-radius: 8px;
     }
     .Botton > p {
         font-size: 14px;

@@ -69,6 +69,9 @@
         width: 58px;
         height: 50px;
     }
+    .Bouncy_Shocked{
+        top: 2px;
+    }
     .Bouncy_Shocked > svg{
         height: 50px;
         width: 52px;
@@ -80,7 +83,7 @@
     .trails{
         width: 90px;
         height: 54px;
-        left: -15px;
+        left: -17px;
     }
     .trails > svg{
         height: 54px;

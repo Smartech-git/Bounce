@@ -21,6 +21,7 @@ import Cloud from './Characters/Cloud';
 import { useStateValue } from './StateProvider';
 import "./GamePage.css";
 import HighScorex from './Characters/Images/HighScorex.png';
+import {cartoonJumpRef} from './Firebase';
 
 
 function GamePage() {
@@ -144,9 +145,9 @@ function GamePage() {
     ID = setInterval(() =>{
       speed.current = speed.current + 0.3;
       PlatformRef.current.updatePlaybackRate(speed.current);
-      PlatformRef.current.ready.then(() =>{
-        console.log(PlatformRef.current.playbackRate);
-      });
+      // PlatformRef.current.ready.then(() =>{
+      //   console.log(PlatformRef.current.playbackRate);
+      // });
       FirstSceneRef.current.updatePlaybackRate(speed.current);
       SecondSceneRef.current.updatePlaybackRate(speed.current);
       ThirdSceneRef.current.updatePlaybackRate(speed.current);
@@ -237,15 +238,31 @@ function GamePage() {
     })
   }, [state.GameStates.Start, state.GameStates.Restart]);
 
+  useLayoutEffect(() =>{
+    if(state.GameStates.GameOver === true){
+      setX(false);
+    }
+  }, [state.GameStates.GameOver]);
+
   function HandleJump(){
     if(state.GameStates.Start === true && X === true){
       BouncyRef.current.play();
       TrailsRef.current.play();
-    } else if(state.GameStates.Pause === true){
+      cartoonJumpRef.play();
+    }
+    if(state.GameStates.Pause === true){
       BouncyRef.current.pause();
       TrailsRef.current.pause();
     }   
   }
+
+  useEffect(() =>{
+      window.addEventListener("keydown", HandleJump);
+  
+      return(() =>{
+        window.removeEventListener("keydown", HandleJump)
+      })
+  })
 
   useEffect(() =>{
     setPop(false);

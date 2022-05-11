@@ -18,7 +18,7 @@ function Bundle(){
         Obstacle2Ref.current = document.getElementsByClassName("Obstacle2")[0];
         Obstacle3Ref.current = document.getElementsByClassName("Obstacle3")[0];
         plafRef.current = document.getElementsByClassName("PlayBuilding")[0];
-    });
+    }, []);
 
     useEffect(() =>{
         let ID;
@@ -34,6 +34,7 @@ function Bundle(){
                 // console.log(`Obs3 - Y:${Math.floor(Ob3.y)} left:${Math.floor(Ob3.x)} `);
                 if(Math.floor(Bf.right) >= Math.floor(Ob1.x) && Math.floor(Bf.x) <= Math.floor(Ob1.right)){
                     if(Math.floor(Bf.y) >= Math.floor(Ob1.y)){
+                        window.navigator.vibrate(200);
                         const action = {
                             type : actionTypes.GAMEOVER,
                             GameOver: true

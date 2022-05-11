@@ -12,17 +12,17 @@ import Mobile from './Characters/Images/Mobile.png';
 import Desktop from './Characters/Images/Desktop.png';
 import {useStateValue} from './StateProvider';
 import { actionTypes } from './Reducer';
+import {clickSoundRef, prologAudioRef} from './Firebase';
 
 function Home() {
     const [state, dispatch] = useStateValue();
     const [letsGo, setLetsGo] = useState();
     const [unmount, setUnmount]  = useState();
 
-
-    
     useEffect(() => {
         let ID;
         if(letsGo === false) {
+            clickSoundRef.play();
             ID = setTimeout(()=>  {
                 const action2 = {
                     type: actionTypes.GAMEOVER,
