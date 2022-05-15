@@ -1,6 +1,8 @@
 
 export const initialState = {
     HighScore: false,
+    Audio: true,
+    Seek: false,
     GameStates : {
         Start : false,
         Pause: false,
@@ -11,6 +13,8 @@ export const initialState = {
     }
 }
 export const actionTypes = {
+    SEEK: "SEEK",
+    AUDIO: "AUDIO",
     HIGHSCORE: "HIGHSCORE",
     START: "START",
     PAUSE: "PAUSE",
@@ -26,6 +30,16 @@ const reducer = (state, action) => {
                 ...state,
                 HighScore : action.HighScore
             };
+        case actionTypes.SEEK:
+            return {
+                ...state,
+                Seek : action.Seek
+            };
+        case actionTypes.AUDIO:
+        return {
+            ...state,
+            Audio: action.Audio
+        };
         case actionTypes.START: 
             return {
                 ...state,

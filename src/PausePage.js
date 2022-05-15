@@ -3,6 +3,8 @@ import './PausePage.css';
 import Pause from './Characters/Images/Pause.png';
 import { useStateValue } from './StateProvider';
 import {actionTypes} from './Reducer';
+import AudioBotton from './AudioBotton';
+import {clickSoundRef} from './Firebase';
 
 
 function PausePage() {
@@ -84,7 +86,18 @@ function PausePage() {
         })
     }, [quit]);
 
-
+    function onclickResume(){
+        setResume(true)
+        clickSoundRef.play()
+    }
+    function onclickRestart(){
+        setRestart(true)
+        clickSoundRef.play()
+    }
+    function onclickQuit(){
+        setQuit(true)
+        clickSoundRef.play()
+    }
     return (
         <div className={`PausePage ${unmount}`}>
             <div className="InnerTab">
@@ -92,16 +105,17 @@ function PausePage() {
                     <img src={Pause} alt="Pause" decoding="sync"></img>
                 </div>
                 <div className="Options">
-                    <div className={`Resume botton${resume}`} onMouseDown={() => setResume(true)} onMouseUp={() => setResume(false)}>
+                    <div className={`Resume botton${resume}`} onMouseDown={onclickResume} onMouseUp={() => setResume(false)}>
                         <span>Resume</span>
                     </div>
-                    <div className={`Restart botton${restart}`} onMouseDown={() => setRestart(true)} onMouseUp={() => setRestart(false)}>
+                    <div className={`Restart botton${restart}`} onMouseDown={onclickRestart} onMouseUp={() => setRestart(false)}>
                         <span>Restart</span>
                     </div>
-                    <div className ={`Quit botton${quit}`} onMouseDown={() => setQuit(true)} onMouseUp={() => setQuit(false)}>
+                    <div className ={`Quit botton${quit}`} onMouseDown={onclickQuit} onMouseUp={() => setQuit(false)}>
                         <span>Quit</span>
                     </div>
                 </div>
+                <AudioBotton/>
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import GameoverText from './Characters/Images/GameoverText.png';
 import './GameOver.css';
 import {useStateValue} from './StateProvider';
 import { actionTypes } from './Reducer';
+import {clickSoundRef} from './Firebase';
 
 function GameOver() {
     const [cont, setCont] = useState();
@@ -46,10 +47,15 @@ function GameOver() {
         })
     }, [cont])
 
+    function onclick() {
+        setCont(true)
+        clickSoundRef.play()
+    }
+
     return (
         <div className="GameOverC">
            <img src={GameoverText} alt="Game Over"></img>
-           <div className={`Continue cont${cont}`} onMouseDown={() => setCont(true)} onMouseUp={() => setCont(false)}>
+           <div className={`Continue cont${cont}`} onMouseDown={onclick} onMouseUp={() => setCont(false)}>
                 <span>Continue</span>
            </div>
         </div>

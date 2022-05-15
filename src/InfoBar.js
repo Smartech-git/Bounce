@@ -27,15 +27,6 @@ function InfoBar() {
     }
   }, [state.GameStates.Start, state.GameStates.Restart]);
 
-  // useLayoutEffect(() => {
-  //   if(state.GameStates.Restart === true){
-  //     setScore("000000");
-  //     arr.current = ['0', '0', '0', '0', '0', '0'];
-  //     point.current = 0;
-  //     T.current = 3000;
-  //     setX(false);
-  //   }
-  // }, [state.GameStates.Restart]);
 
   useEffect(() => {
     // localStorage.clear()

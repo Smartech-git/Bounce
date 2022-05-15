@@ -43,7 +43,7 @@ function Bundle(){
                     }
                 } else if(Math.floor(Bf.right) >= Math.floor(Ob2.x) && Math.floor(Bf.x) <= Math.floor(Ob2.right)){
                     if(Math.floor(Bf.y) >= Math.floor(Ob2.y)){
-                    
+                        window.navigator.vibrate(200);
                         const action = {
                             type : actionTypes.GAMEOVER,
                             GameOver: true
@@ -52,7 +52,7 @@ function Bundle(){
                     }
                 } else if(Math.floor(Bf.right) >= Math.floor(Ob3.x) && Math.floor(Bf.x) <= Math.floor(Ob3.right)){
                     if(Math.floor(Bf.y) >= Math.floor(Ob3.y)){
-                    
+                        window.navigator.vibrate(200);
                         const action = {
                             type : actionTypes.GAMEOVER,
                             GameOver: true
@@ -61,6 +61,7 @@ function Bundle(){
                     }
                 }
             }, 10);
+            
         }else {
             clearInterval(ID);
         }
@@ -69,6 +70,7 @@ function Bundle(){
             clearInterval(ID);
         })
     });
+
     return (
         <div className="BundleB">
           <Bouncy/>

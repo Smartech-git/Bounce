@@ -21,7 +21,10 @@ import Cloud from './Characters/Cloud';
 import { useStateValue } from './StateProvider';
 import "./GamePage.css";
 import HighScorex from './Characters/Images/HighScorex.png';
-import {cartoonJumpRef} from './Firebase';
+import { Howl } from 'howler';
+import {cartoonJumpRef, blasterMaster} from './Firebase';
+import {getDownloadURL} from "firebase/storage";
+import {GameFailSoundRef} from './Firebase';
 
 
 function GamePage() {
@@ -36,107 +39,122 @@ function GamePage() {
   const TrailsRef = useRef();
   const [X, setX] = useState(false);
   const speed = useRef(1);
-  
+  const [P, setP] = useState();
+  const BlasterMasterRef = useRef();
  
   useEffect(() => {
-   let t = 3000;
-   let C = document.getElementsByClassName("Clouds")[0].animate(
-    [
-      {transform: "translateX(0)"},
-      {transform: "translateX(-75%)"}
-    ],
-    { 
-      delay: t,
-      duration: 300*1000,
-      easing: 'linear',
-      iteration: Infinity
-    }
-  )
-  let F = document.getElementsByClassName("FirstScene")[0].animate(
-    [
-      {transform: 'translateX(0)'},
-      {transform: 'translateX(-80%)'}
-    ],
-    {
-      delay: t,
-      duration: 50000,
-      easing: 'linear',
-      iterations: Infinity
-    }
-  );
-
-  let S  = document.getElementsByClassName("SecondScene")[0].animate(
-    [
-      {transform: 'translateX(0)'},
-      {transform: 'translateX(-80%)'}
-    ],
-    {
-      delay: t,
-      duration: 75000,
-      easing: 'linear',
-      iterations: Infinity
-    }
-  );
-
-  let T = document.getElementsByClassName("ThirdScene")[0].animate(
-    [
-      {transform: 'translateX(0)'},
-      {transform: 'translateX(-80%)'}
-    ],
-    {
-      delay: t,
-      duration: 112500,
-      easing: 'linear',
-      iterations: Infinity
-    }
-  );
-
-  let P = document.getElementsByClassName("PlayBuilding")[0].animate(
-    [
-      {transform: "translateX(0%)"},
-      {transform: "translateX(-75%)"}
-    ],
-    {
-      delay: t,
-      duration: 9000,
-      easing: 'linear',
-      iterations: Infinity
-    }
-  );
+    let t = 3000;
+    getDownloadURL(blasterMaster)
+    .then((url) =>{
+        BlasterMasterRef.current = new Howl({
+            src: [url],
+            loop: true,
+            autoplay: true,
+            volume: 0.6
+        })
+        setP(true);
+    })
+    .catch((err) => {
+    console.log(err);
+    });
     
-  let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
-    [
-      {bottom: "70px"},
-      {bottom: "40vh", offset: 0.38},
-      {bottom: "40vh", offset: 0.5},
-      {bottom: "70px"}
-    ],
-    {
-      duration: 700,
-      easing: "linear",
-    }
-  );
-    
-  let Trails = document.getElementsByClassName("trails")[0].animate(
-    [
-      {transform: "rotate(-30deg) scaleX(0.6)"},
-      {transform: "rotate(0deg) scaleX(1)", offset: 0.5},
-      {transform: "rotate(30deg) scaleX(0.6)"}
-    ],
-    {
-      duration: 600
-    }
+    let C = document.getElementsByClassName("Clouds")[0].animate(
+      [
+        {transform: "translateX(0)"},
+        {transform: "translateX(-75%)"}
+      ],
+      { 
+        delay: t,
+        duration: 300*1000,
+        easing: 'linear',
+        iteration: Infinity
+      }
+    )
+    let F = document.getElementsByClassName("FirstScene")[0].animate(
+      [
+        {transform: 'translateX(0)'},
+        {transform: 'translateX(-80%)'}
+      ],
+      {
+        delay: t,
+        duration: 50000,
+        easing: 'linear',
+        iterations: Infinity
+      }
+    );
 
-  );
+    let S  = document.getElementsByClassName("SecondScene")[0].animate(
+      [
+        {transform: 'translateX(0)'},
+        {transform: 'translateX(-80%)'}
+      ],
+      {
+        delay: t,
+        duration: 75000,
+        easing: 'linear',
+        iterations: Infinity
+      }
+    );
 
-  FirstSceneRef.current = F;
-  SecondSceneRef.current = S;
-  ThirdSceneRef.current = T;
-  PlatformRef.current = P;
-  CloudRef.current = C;
-  BouncyRef.current = Bouncy;
-  TrailsRef.current = Trails;
- },[]);
+    let T = document.getElementsByClassName("ThirdScene")[0].animate(
+      [
+        {transform: 'translateX(0)'},
+        {transform: 'translateX(-80%)'}
+      ],
+      {
+        delay: t,
+        duration: 112500,
+        easing: 'linear',
+        iterations: Infinity
+      }
+    );
+
+    let P = document.getElementsByClassName("PlayBuilding")[0].animate(
+      [
+        {transform: "translateX(0%)"},
+        {transform: "translateX(-75%)"}
+      ],
+      {
+        delay: t,
+        duration: 9000,
+        easing: 'linear',
+        iterations: Infinity
+      }
+    );
+      
+    let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
+      [
+        {bottom: "70px"},
+        {bottom: "40vh", offset: 0.38},
+        {bottom: "40vh", offset: 0.5},
+        {bottom: "70px"}
+      ],
+      {
+        duration: 700,
+        easing: "linear",
+      }
+    );
+      
+    let Trails = document.getElementsByClassName("trails")[0].animate(
+      [
+        {transform: "rotate(-30deg) scaleX(0.6)"},
+        {transform: "rotate(0deg) scaleX(1)", offset: 0.5},
+        {transform: "rotate(30deg) scaleX(0.6)"}
+      ],
+      {
+        duration: 600
+      }
+
+    );
+
+    FirstSceneRef.current = F;
+    SecondSceneRef.current = S;
+    ThirdSceneRef.current = T;
+    PlatformRef.current = P;
+    CloudRef.current = C;
+    BouncyRef.current = Bouncy;
+    TrailsRef.current = Trails;
+  },[]);
  
   useEffect(() =>{
    let ID;
@@ -241,8 +259,14 @@ function GamePage() {
   useLayoutEffect(() =>{
     if(state.GameStates.GameOver === true){
       setX(false);
+      GameFailSoundRef.play();
+      BlasterMasterRef.current.pause();
+    }else{
+      if(P === true && state.Audio === true){
+        BlasterMasterRef.current.play()
+      }
     }
-  }, [state.GameStates.GameOver]);
+  }, [state.GameStates.GameOver, P, state.Audio]);
 
   function HandleJump(){
     if(state.GameStates.Start === true && X === true){
@@ -255,6 +279,16 @@ function GamePage() {
       TrailsRef.current.pause();
     }   
   }
+  useEffect(() => {
+    if(P === true){
+      if(state.Audio === false ){
+        BlasterMasterRef.current.pause()
+      }
+      if(state.Audio === true){
+        BlasterMasterRef.current.play()
+      }
+    }
+  }, [state.Audio, P]);
 
   useEffect(() =>{
       window.addEventListener("keydown", HandleJump);
@@ -262,7 +296,7 @@ function GamePage() {
       return(() =>{
         window.removeEventListener("keydown", HandleJump)
       })
-  })
+  });
 
   useEffect(() =>{
     setPop(false);

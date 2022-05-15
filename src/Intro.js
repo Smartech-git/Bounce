@@ -5,7 +5,6 @@ import Bounce from "./Characters/Images/Bounce.png";
 import BounceS from "./Characters/Images/BounceS.png";
 import {clickSoundRef} from './Firebase';
 import './Intro.css';
-import { prologAudioRef } from './Firebase';
 
 export default function Intro () {
     const [toggle, setToggle] = useState();
@@ -24,6 +23,21 @@ export default function Intro () {
     }, [])
 
     useEffect(() => {
+        // let orientation = window.screen.orientation.type;
+        // let AppRef = document.getElementsByClassName("App")[0];
+        // console.log(orientation)
+        // if(window.screen.width < 800){
+        //     if(orientation === "portrait-secondary" || orientation === "portrait-primary"){
+        //         AppRef.requestFullscreen({navigtionUI:"hide"})
+        //         .then(() =>{
+        //             window.screen.orientation.lock("landscape-primary")
+        //         })
+        //     }
+        // }
+        // if((window.screen.height < 700 && orientation === "landscape-primary") || (window.screen.height < 700 && orientation === "landscape-secondary")){
+        //     AppRef.requestFullscreen({navigtionUI:"hide"});
+        // }
+
         let ID;
         if(toggle === false) {
             clickSoundRef.play();
@@ -39,16 +53,16 @@ export default function Intro () {
 
     useEffect(() => {
         let ID;
+        let ID2;
         if(load === "start") {
             ID = setTimeout(() => {
                 navigate("/gamemode");
-                prologAudioRef.volume(0.5);
-                prologAudioRef.play();
            }, 7000);
         }
 
         return(() =>{
             clearTimeout(ID);
+            clearTimeout(ID2)
         })
 
     },[load]);
@@ -66,7 +80,7 @@ export default function Intro () {
                         <img className='Intro-BounceS' src={BounceS} alt="Bounce"/>
                     </div>
                     <p className = "Info">
-                        A simple game built on React.js library. GitHub repo: github.com/Smartech-git/Bounce.git.
+                        A simple game built on React.js library. Design and illustrations - Figma.
                     </p>
                 </div>
                 {toggle === "loading" ? (
@@ -74,7 +88,7 @@ export default function Intro () {
                          <div className = "loadStatus"></div>
                      </div>
                 ) : (
-                    <div className = {`Botton ${toggle}`} onMouseDown={() => setToggle(true)} onMouseUp={() =>setToggle(false)}>
+                    <div className = {`Botton ${toggle}`} onMouseDown={() => setToggle(true)} onMouseUp={() => setToggle(false)}>
                         <p>Play</p>
                     </div>
                 )}    

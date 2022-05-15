@@ -50,6 +50,7 @@
 }
 
 .InnerTab_Home {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +172,6 @@
     font-size: 12px;
     line-height: 23px;
     color: rgba(0, 0, 0, 0.7);
-
 }
 .HomeSecondTab {
     width: 500px;
@@ -233,7 +233,7 @@
     letter-spacing: 0.04em;
     color: #FFFFFF
 }
-@media screen and (max-width: 1000px) and (orientation: landscape){
+@media screen and (max-width: 1000px) and (orientation: landscape), (max-height: 550px){
     .Home{
         border-radius: 10px;
     }
@@ -349,7 +349,7 @@
         font-size: 12px;
     }
 }
-@media screen and (max-height: 350px) and (orientation: landscape){
+@media screen and (max-height: 380px) and (orientation: landscape){
     .HomeSecondTab{
         display: none;
     }

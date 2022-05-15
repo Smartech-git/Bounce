@@ -19,23 +19,18 @@ export const storage = getStorage(app);
 const analytics = getAnalytics(app);
 
 export let clickSoundRef;
-export let prologAudioRef;
 export let cartoonJumpRef;
+export let BlasterMasterRef;
+export let GameFailSoundRef;
 const click = ref(storage, 'Audio/click.mp3');
-const prologAudio = ref(storage, 'Audio/prolog.mp3')
+export const blasterMaster = ref(storage, 'Audio/blasterMaster.mp3')
 const cartoonJump = ref(storage, 'Audio/cartoon-jump.mp3')
-const list = ref(storage, "gs://bounce-beta.appspot.com")
-
-listAll(list).then((res) => {
-    console.log(res);
-}).catch((err) => {
-    console.log(err);
-})
-
+const GameFailSound = ref(storage, 'Audio/gameFailSound.wav')
 getDownloadURL(click)
 .then((url) => {
-  const clickSound = new Audio(url)
-  clickSoundRef = clickSound 
+  clickSoundRef = new Howl({
+      src: [url]
+  })
 })
 .catch((error) => {
     console.log(error);
@@ -45,7 +40,7 @@ getDownloadURL(cartoonJump)
 .then((url) => {
   cartoonJumpRef = new Howl({
     src: [url],
-    volume: 0.1,
+    volume: 0.5,
     rate: 2
   })
 })
@@ -53,12 +48,13 @@ getDownloadURL(cartoonJump)
     console.log(error);
 });
 
-// getDownloadURL(prologAudio)
-// .then((url) =>{
-//   prologAudioRef = new Howl({
-//     src: [url],
-//   })
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
+getDownloadURL(GameFailSound)
+.then((url) => {
+  GameFailSoundRef = new Howl({
+    src: [url],
+    volume: 0.5
+  })
+})
+.catch((error) => {
+    console.log(error);
+});

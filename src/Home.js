@@ -11,8 +11,9 @@ import HowToPlay from './Characters/Images/HowToPlay.png';
 import Mobile from './Characters/Images/Mobile.png';
 import Desktop from './Characters/Images/Desktop.png';
 import {useStateValue} from './StateProvider';
+import AudioBotton from './AudioBotton';
 import { actionTypes } from './Reducer';
-import {clickSoundRef, prologAudioRef} from './Firebase';
+import { clickSoundRef } from './Firebase';
 
 function Home() {
     const [state, dispatch] = useStateValue();
@@ -24,6 +25,7 @@ function Home() {
         if(letsGo === false) {
             clickSoundRef.play();
             ID = setTimeout(()=>  {
+
                 const action2 = {
                     type: actionTypes.GAMEOVER,
                     GameOver: false
@@ -98,6 +100,7 @@ function Home() {
                         <span>Let's bounce</span>
                     </div>
                 </div>
+                <AudioBotton/>
             </div>
         </div>
     );
