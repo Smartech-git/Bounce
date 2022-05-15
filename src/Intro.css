@@ -123,7 +123,7 @@
 
 .Info {
     position: relative;
-    top: -50px;
+    top: -40px;
     width: 295px;
     height: 60px;
     font-family: 'Poppins', sans-serif;
@@ -131,11 +131,13 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
-    display: flex;
     align-items: center;
     text-align: center;
     letter-spacing: 0.04em;
     color: rgba(0, 0, 0, 0.40);
+}
+.autoRotateInfo {
+    display: none;
 }
 
 @media screen and (max-width: 900px ) and (orientation: landscape), (max-width: 500px){
@@ -150,7 +152,7 @@
     }
     .Bounce{
         position: relative;
-        top: 10px;
+        margin-top: 10px;
     }
     .BounceText{
         top: -20px;
@@ -163,13 +165,36 @@
     }
     .Info{
         font-size: 8px;
-        top: -40px;
+        top: -30px;
         width: 190px;
         line-height: 14px;
     }
+    .autoRotateInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        top: -70px;
+        width: 150px;
+    }
+    .autoRotateInfo > p {
+        position: relative;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-size: 6px;
+        line-height: 8px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.1px;
+        color: rgba(0, 0, 0, 0.40);
+    }
+    .autoRotateInfo > svg {
+        position: relative;
+        top: -2px;
+    }
     .Botton {
         position: relative;
-        top: -20px;
+        top: -40px;
         height: 35px;
         width: 100px;
         border-width: 2px;

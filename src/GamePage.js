@@ -266,7 +266,7 @@ function GamePage() {
         BlasterMasterRef.current.play()
       }
     }
-  }, [state.GameStates.GameOver, P, state.Audio]);
+  }, [state.GameStates.GameOver, P]);
 
   function HandleJump(){
     if(state.GameStates.Start === true && X === true){
