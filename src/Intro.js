@@ -23,21 +23,6 @@ export default function Intro () {
     }, [])
 
     useEffect(() => {
-        // let orientation = window.screen.orientation.type;
-        // let AppRef = document.getElementsByClassName("App")[0];
-        // console.log(orientation)
-        // if(window.screen.width < 800){
-        //     if(orientation === "portrait-secondary" || orientation === "portrait-primary"){
-        //         AppRef.requestFullscreen({navigtionUI:"hide"})
-        //         .then(() =>{
-        //             window.screen.orientation.lock("landscape-primary")
-        //         })
-        //     }
-        // }
-        // if((window.screen.height < 700 && orientation === "landscape-primary") || (window.screen.height < 700 && orientation === "landscape-secondary")){
-        //     AppRef.requestFullscreen({navigtionUI:"hide"});
-        // }
-
         let ID;
         if(toggle === false) {
             clickSoundRef.play();

@@ -108,19 +108,6 @@ function GamePage() {
         iterations: Infinity
       }
     );
-
-    let P = document.getElementsByClassName("PlayBuilding")[0].animate(
-      [
-        {transform: "translateX(0%)"},
-        {transform: "translateX(-75%)"}
-      ],
-      {
-        delay: t,
-        duration: 9000,
-        easing: 'linear',
-        iterations: Infinity
-      }
-    );
       
     let Bouncy = document.getElementsByClassName("Bouncy")[0].animate(
       [
@@ -163,9 +150,6 @@ function GamePage() {
     ID = setInterval(() =>{
       speed.current = speed.current + 0.3;
       PlatformRef.current.updatePlaybackRate(speed.current);
-      // PlatformRef.current.ready.then(() =>{
-      //   console.log(PlatformRef.current.playbackRate);
-      // });
       FirstSceneRef.current.updatePlaybackRate(speed.current);
       SecondSceneRef.current.updatePlaybackRate(speed.current);
       ThirdSceneRef.current.updatePlaybackRate(speed.current);
@@ -211,7 +195,7 @@ function GamePage() {
     }
   }, [state.GameStates.Start]);
 
-  useEffect(() => {
+  useEffect(() => { 
     if(state.GameStates.Pause === true || state.GameStates.GameOver === true) {
       FirstSceneRef.current.pause();
       SecondSceneRef.current.pause();

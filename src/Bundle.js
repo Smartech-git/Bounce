@@ -13,6 +13,19 @@ function Bundle(){
     const plafRef = useRef();
     
     useEffect(() =>{
+        let t = 3000;
+        let P = document.getElementsByClassName("PlayBuilding")[0].animate(
+            [
+              {transform: "translateX(0%)"},
+              {transform: "translateX(-75%)"}
+            ],
+            {
+              delay: t,
+              duration: 9000,
+              easing: 'linear',
+              iterations: Infinity
+            }
+          );
         BouncyRef.current = document.getElementsByClassName("Expressions")[0];
         Obstacle1Ref.current = document.getElementsByClassName("Obstacle1")[0];
         Obstacle2Ref.current = document.getElementsByClassName("Obstacle2")[0];
@@ -61,9 +74,6 @@ function Bundle(){
                     }
                 }
             }, 10);
-            
-        }else {
-            clearInterval(ID);
         }
 
         return(() => {
