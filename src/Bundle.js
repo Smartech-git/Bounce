@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState} from 'react';
+import { useEffect, useRef} from 'react';
 import Bouncy from './Bouncy';
 import PlayBuilding from './PlayBuilding';
 import { useStateValue} from './StateProvider';
@@ -9,8 +9,10 @@ function Bundle(){
     const Obstacle1Ref = useRef();
     const Obstacle2Ref = useRef();
     const Obstacle3Ref = useRef();
+    const PlatformRef = useRef();
     const BouncyRef = useRef();
     const plafRef = useRef();
+    const speed = useRef(1)
     
     useEffect(() =>{
         let t = 3000;
@@ -26,6 +28,7 @@ function Bundle(){
               iterations: Infinity
             }
           );
+        PlatformRef.current = P;
         BouncyRef.current = document.getElementsByClassName("Expressions")[0];
         Obstacle1Ref.current = document.getElementsByClassName("Obstacle1")[0];
         Obstacle2Ref.current = document.getElementsByClassName("Obstacle2")[0];
@@ -74,12 +77,55 @@ function Bundle(){
                     }
                 }
             }, 10);
+        } else {
+            clearInterval(ID)
         }
 
         return(() => {
             clearInterval(ID);
         })
-    });
+    }, [state.GameStates.Start, state.GameStates.GameOver]);
+
+    useEffect(() => {
+        let ID;
+        if(state.GameStates.Start === true && state.GameStates.Pause === false){
+            speed.current=1;
+            ID = setInterval(() =>{
+            speed.current = speed.current + 0.3;
+            PlatformRef.current.updatePlaybackRate(speed.current);
+            }, 50*1000);
+        }else if(state.GameStates.Start === false){
+            speed.current=1;
+        }
+        return(() =>{
+        clearInterval(ID)
+        })
+
+    }, [state.GameStates.Start, state.GameStates.Pause]);
+
+    useEffect(() => {
+        if(state.GameStates.Start === true){
+            PlatformRef.current.cancel();
+            PlatformRef.current.play();
+        } else{
+            PlatformRef.current.cancel();
+            PlatformRef.current.pause();
+        }
+    }, [state.GameStates.Start])
+    
+    useEffect(() => {
+        if(state.GameStates.Pause === true || state.GameStates.GameOver === true){
+            PlatformRef.current.pause()
+        }else if(state.GameStates.Resume === true){
+            PlatformRef.current.play()
+        }else if(state.GameStates.Quit === true){
+            PlatformRef.current.cancel()
+        }else if (state.GameStates.Restart === true){
+            speed.current = 1;
+            PlatformRef.current.cancel();
+            PlatformRef.current.play();
+        }
+    }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart, state.GameStates.GameOver])
 
     return (
         <div className="BundleB">

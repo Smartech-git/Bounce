@@ -5,7 +5,7 @@ import ObstacleTwo from './Characters/scenes/ObstacleTwo';
 import ObstacleThree from './Characters/scenes/ObstacleThree';
 import './PlayBuilding.css';
 
-function PlayBuilding () {
+function PlayBuilding() { 
   return (
     <div className='PlayBuilding'>
       <div className="BTone">

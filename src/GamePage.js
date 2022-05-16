@@ -19,8 +19,8 @@ import BackGround33 from './Characters/scenes/BackGround33';
 import BackGround34 from './Characters/scenes/BackGround34';
 import Cloud from './Characters/Cloud';
 import { useStateValue } from './StateProvider';
+import HighScorePop from './HighScorePop';
 import "./GamePage.css";
-import HighScorex from './Characters/Images/HighScorex.png';
 import { Howl } from 'howler';
 import {cartoonJumpRef, blasterMaster} from './Firebase';
 import {getDownloadURL} from "firebase/storage";
@@ -29,11 +29,9 @@ import {GameFailSoundRef} from './Firebase';
 
 function GamePage() {
   const [state, dispatch] = useStateValue();
-  const [Pop, setPop] = useState();
   const FirstSceneRef = useRef();
   const SecondSceneRef = useRef();
   const ThirdSceneRef = useRef();
-  const PlatformRef = useRef();
   const CloudRef= useRef();
   const BouncyRef = useRef();
   const TrailsRef = useRef();
@@ -137,7 +135,6 @@ function GamePage() {
     FirstSceneRef.current = F;
     SecondSceneRef.current = S;
     ThirdSceneRef.current = T;
-    PlatformRef.current = P;
     CloudRef.current = C;
     BouncyRef.current = Bouncy;
     TrailsRef.current = Trails;
@@ -149,17 +146,12 @@ function GamePage() {
     speed.current=1;
     ID = setInterval(() =>{
       speed.current = speed.current + 0.3;
-      PlatformRef.current.updatePlaybackRate(speed.current);
       FirstSceneRef.current.updatePlaybackRate(speed.current);
       SecondSceneRef.current.updatePlaybackRate(speed.current);
       ThirdSceneRef.current.updatePlaybackRate(speed.current);
-     }, 30*1000);
+     }, 50*1000);
     } else if(state.GameStates.Start === false){
       speed.current=1;
-      PlatformRef.current.updatePlaybackRate(1);
-      FirstSceneRef.current.updatePlaybackRate(1);
-      SecondSceneRef.current.updatePlaybackRate(1);
-      ThirdSceneRef.current.updatePlaybackRate(1);
      }
     return(() =>{
       clearInterval(ID)
@@ -172,12 +164,10 @@ function GamePage() {
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
-      PlatformRef.current.cancel();
       CloudRef.current.cancel();
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
       ThirdSceneRef.current.play();
-      PlatformRef.current.play();
       CloudRef.current.play();
       BouncyRef.current.cancel();
     }
@@ -185,12 +175,10 @@ function GamePage() {
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
-      PlatformRef.current.cancel();
       CloudRef.current.cancel();
       FirstSceneRef.current.pause();
       SecondSceneRef.current.pause();
       ThirdSceneRef.current.pause();
-      PlatformRef.current.pause();
       CloudRef.current.pause();
     }
   }, [state.GameStates.Start]);
@@ -200,30 +188,25 @@ function GamePage() {
       FirstSceneRef.current.pause();
       SecondSceneRef.current.pause();
       ThirdSceneRef.current.pause();
-      PlatformRef.current.pause();
       BouncyRef.current.pause()
     }else if(state.GameStates.Resume === true) {
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
       ThirdSceneRef.current.play();
-      PlatformRef.current.play();
     }else if(state.GameStates.Quit === true ) {
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
-      PlatformRef.current.cancel();
     }else if(state.GameStates.Restart === true) {
       speed.current = 1;
       FirstSceneRef.current.cancel();
       SecondSceneRef.current.cancel();
       ThirdSceneRef.current.cancel();
-      PlatformRef.current.cancel();
       BouncyRef.current.cancel();
       
       FirstSceneRef.current.play();
       SecondSceneRef.current.play();
       ThirdSceneRef.current.play();
-      PlatformRef.current.play();
     }
   }, [state.GameStates.Pause, state.GameStates.Resume, state.GameStates.Quit, state.GameStates.Restart, state.GameStates.GameOver]);
 
@@ -281,22 +264,13 @@ function GamePage() {
         window.removeEventListener("keydown", HandleJump)
       })
   });
-
-  useEffect(() =>{
-    setPop(false);
-    if(state.HighScore === true){
-      setPop(true);
-    }
-  }, [state.HighScore]);
  
   return (
     <div className='Sensitive'>
       <div className='SensitiveTab' onMouseDown={HandleJump}></div>
       <div className="BackGC">
         <div className="GamePage">
-          <div className={`HighscorePop Pop${Pop}`}>
-            <img src={HighScorex} alt="High Score"></img>
-          </div>
+          <HighScorePop/>
           {state.GameStates.Start === false && <Home/>}
           {state.GameStates.Pause === true && <PausePage/>}
           {state.GameStates.GameOver === true && <GameOver/>}
