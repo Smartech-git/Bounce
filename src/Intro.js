@@ -23,6 +23,10 @@ export default function Intro () {
     }, [])
 
     useEffect(() => {
+        let orientation = window.screen.orientation.type;
+        if((window.screen.width <= 750 && orientation === "portrait-primary") || (window.screen.width <= 750 && orientation === "portrait-secondary")){
+            window.screen.orientation.lock("landscape")
+        }
         let ID;
         if(toggle === false) {
             clickSoundRef.play();

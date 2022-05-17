@@ -186,7 +186,7 @@
         align-items: center;
         text-align: center;
         letter-spacing: 0.1px;
-        color: rgba(0, 0, 0, 0.40);
+        color: rgba(0, 0, 0, 0.60);
     }
     .autoRotateInfo > svg {
         position: relative;

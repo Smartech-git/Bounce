@@ -235,7 +235,8 @@ function GamePage() {
     }
   }, [state.GameStates.GameOver, P]);
 
-  function HandleJump(){
+  function HandleJump(e){
+    e.stopPropagation();
     if(state.GameStates.Start === true && X === true){
       BouncyRef.current.play();
       TrailsRef.current.play();
@@ -257,9 +258,8 @@ function GamePage() {
     }
   }, [state.Audio, P]);
 
-  useEffect(() =>{
+  useLayoutEffect(() =>{
       window.addEventListener("keydown", HandleJump);
-  
       return(() =>{
         window.removeEventListener("keydown", HandleJump)
       })
@@ -267,7 +267,7 @@ function GamePage() {
  
   return (
     <div className='Sensitive'>
-      <div className='SensitiveTab' onMouseDown={HandleJump}></div>
+      <div className='SensitiveTab' onTouchStart={HandleJump}></div>
       <div className="BackGC">
         <div className="GamePage">
           <HighScorePop/>
